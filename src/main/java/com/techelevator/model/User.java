@@ -13,8 +13,15 @@ public class User {
 	})
 	private String password;
 	private String role;
+	private int age;
+	
 	
 	private String confirmPassword;
+	
+	public User(){
+		
+	}
+	
 	public String getUserName() {
 		return userName;
 	}
@@ -44,5 +51,12 @@ public class User {
 	}
 	public void setConfirmPassword(String confirmPassword) {
 		this.confirmPassword = confirmPassword;
+	}
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
 	}
 }
