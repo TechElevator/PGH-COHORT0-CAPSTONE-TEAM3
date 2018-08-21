@@ -72,6 +72,6 @@
 			</div>
 		</nav>
 		<c:if test="${not empty currentUser}">
-			<p id="currentUser">Current User: ${user_name}</p>
+			<p id="currentUser">Current User: ${currentUser.userName}</p>
 		</c:if>		
 		<div class="container">
