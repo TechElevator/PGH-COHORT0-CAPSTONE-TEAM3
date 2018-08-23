@@ -33,8 +33,8 @@
 	<body>
 		<header>
 			<c:url var="homePageHref" value="/" />
-			<c:url var="imgSrc" value="/img/placeholder.png"/>
-			<a href="${homePageHref}"><img src="${imgSrc}" class="img-responsive" /></a>
+			<c:url var="imgSrc" value="/img/Tours'nAt.png"/>
+			<a href="${homePageHref}"><img src="${imgSrc}" class="img-responsive header-full" /></a>
 		</header>
 			
 		<nav class="navbar navbar-default">
