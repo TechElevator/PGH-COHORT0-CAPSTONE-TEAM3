@@ -1,5 +1,5 @@
 .jumbotron {
-	background-image: url("../img/pghOverview.jpg");
+	background-image: url("../img/pghOverview.png");
 	background-size: cover;
 	height: 100%;
 	padding: 10% 0% 10% 0%;
@@ -12,5 +12,12 @@
 #logo {
 	height: 100px;
 	width:auto;
-	z-index: +10;
+}
+
+#logo-container {
+	display: flex;
+	justify-content: space-around;
+	height:auto;
+	width: auto;
+	
 }
