@@ -33,9 +33,16 @@
 	</head>
 	<body>
 		<header>
-			<c:url var="homePageHref" value="/" />
+				
+			<div class="jumbotron">
+			
+			<c:url var="headerBG" value="/img/headerBG.png"/>
+			<img src="${headerBG}" />
+			
 			<c:url var="imgSrc" value="/img/Tours'nAt.png"/>
 			<a href="${homePageHref}"><img src="${imgSrc}" class="img-responsive header-full" /></a>
+			
+			</div>
 		</header>
 			
 		<nav class="navbar navbar-default">
