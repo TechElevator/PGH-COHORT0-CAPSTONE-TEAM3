@@ -11,7 +11,7 @@
 	    <script src="https://cdn.jsdelivr.net/jquery.timeago/1.4.1/jquery.timeago.min.js"></script>
 	    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	    
-	    <c:url var="cssHref" value="/site.css" />
+	    <c:url var="cssHref" value="/css/site.css" />
 		<link rel="stylesheet" type="text/css" href="${cssHref}">
 		
 		<script type="text/javascript">
@@ -36,11 +36,8 @@
 				
 			<div class="jumbotron">
 			
-			<c:url var="headerBG" value="/img/headerBG.png"/>
-			<img src="${headerBG}" />
-			
 			<c:url var="imgSrc" value="/img/Tours'nAt.png"/>
-			<a href="${homePageHref}"><img src="${imgSrc}" class="img-responsive header-full" /></a>
+			<a href="${homePageHref}"><img src="${imgSrc}" id="logo" /></a>
 			
 			</div>
 		</header>

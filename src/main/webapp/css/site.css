@@ -1,8 +1,16 @@
 .jumbotron {
-	
-	margin: 0px ;
-	padding: 0px;
-	
-    background-color: #eee;
+	background-image: url("../img/pghOverview.jpg");
+	background-size: cover;
+	height: 100%;
+	padding: 10% 0% 10% 0%;
+	margin: 0px;
+	align: center;
+	background-color: transparent;
     
+}
+
+#logo {
+	height: 100px;
+	width:auto;
+	z-index: +10;
 }
