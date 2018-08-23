@@ -3,6 +3,44 @@
 <c:import url="/WEB-INF/jsp/header.jsp" />
 
  
+ 
+ 
+ <div class="box-container">
+ 
+ 	<c:url var="nightlife" value="/img/category-img/nightlife.png"/>
+	<img src="${nightlife}" class="category-img"/>
+	
+ </div>
+ 
+ <div class="box-container">
+ 
+ </div>
+ 
+  <div class="box-container">
+ 
+ 	<div class="small-box">
+ 	<c:url var="andrew" value="/img/andrew.jpg"/>
+	<img src="${andrew}" class="img-circle" />
+	<h3>Andrew</h3>
+	</div>
+	
+ 	<div class="small-box">	
+	<c:url var="matt" value="/img/matt.jpg"/>
+	<img src="${matt}" class="img-circle" />
+	<h3>Matt</h3>
+	</div>
+	
+	<div class="small-box">
+	<c:url var="ryan" value="/img/ryan.jpg"/>
+	<img src="${ryan}" class="img-circle" /> 
+	<br>
+	<h3>Ryan</h3>
+ 	</div>
+ 	
+ </div>
+ 
+ 
+ 
     
     
     <style>
