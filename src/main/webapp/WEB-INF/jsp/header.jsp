@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Critter</title>
+		<title>Tours N'At</title>
 		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 	    <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js"></script>
@@ -34,9 +34,10 @@
 	<body>
 		<header>
 			<c:url var="homePageHref" value="/" />
-			<c:url var="imgSrc" value="/img/placeholder.png" />
-			<a href="${homePageHref}"><img src="${imgSrc}" class="img-responsive" /></a>
+			<c:url var="imgSrc" value="/img/Tours'nAt.png"/>
+			<a href="${homePageHref}"><img src="${imgSrc}" class="img-responsive header-full" /></a>
 		</header>
+			
 		<nav class="navbar navbar-default">
 			<div class="container-fluid">
 				<ul class="nav navbar-nav">
@@ -44,11 +45,11 @@
 					<li><a href="${homePageHref}">Home</a></li>
 					<c:if test="${not empty currentUser}">
 						<c:url var="dashboardHref" value="/users/${currentUser}" />
-						<li><a href="${dashboardHref}">Private Messages</a></li>
+						<li><a href="${dashboardHref}">New Tour</a></li>
 						<c:url var="newMessageHref" value="/users/${currentUser}/messages/new" />
-						<li><a href="${newMessageHref}">New Message</a></li>
+						<li><a href="${newMessageHref}">Saved Tours</a></li>
 						<c:url var="sentMessagesHref" value="/users/${currentUser}/messages" />
-						<li><a href="${sentMessagesHref}">Sent Messages</a></li>
+						<li><a href="${sentMessagesHref}">Suggestions</a></li>
 						<c:url var="changePasswordHref" value="/users/${currentUser}/changePassword" />
 						<li><a href="${changePasswordHref}">Change Password</a></li>
 					</c:if>
@@ -62,17 +63,19 @@
 							<li><a href="${loginHref}">Log In</a></li>
 						</c:when>
 						<c:otherwise>
+						
 							<c:url var="logoutAction" value="/logout" />
 							<form id="logoutForm" action="${logoutAction}" method="POST">
 							<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
 							</form>
+							<c:if test="${not empty currentUser}">
+						<li><a id="currentUser">Welcome Back: ${currentUser.userName}</a></li>
+						</c:if>	
 							<li><a id="logoutLink" href="#">Log Out</a></li>
 						</c:otherwise>
 					</c:choose>
 				</ul>
 			</div>
 		</nav>
-		<c:if test="${not empty currentUser}">
-			<p id="currentUser">Current User: ${currentUser.userName}</p>
-		</c:if>		
+			
 		<div class="container">

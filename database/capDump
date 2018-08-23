@@ -1,0 +1,133 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 10.5
+-- Dumped by pg_dump version 10.5
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: app_user; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.app_user (
+    id integer NOT NULL,
+    user_name character varying(32) NOT NULL,
+    password character varying(32) NOT NULL,
+    role character varying(32),
+    salt character varying(255) NOT NULL,
+    age integer
+);
+
+
+ALTER TABLE public.app_user OWNER TO postgres;
+
+--
+-- Name: app_user_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.app_user_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.app_user_id_seq OWNER TO postgres;
+
+--
+-- Name: app_user_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.app_user_id_seq OWNED BY public.app_user.id;
+
+
+--
+-- Name: app_user id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.app_user ALTER COLUMN id SET DEFAULT nextval('public.app_user_id_seq'::regclass);
+
+
+--
+-- Data for Name: app_user; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.app_user (id, user_name, password, role, salt, age) FROM stdin;
+1	matt	G/uBLaGaOJYngBDWxu6BGA==	\N	gEQqyiNsratzRFmlgKXkhAlzVTHpjOF95UmPjbxIer36D5o5glUWB1nFEM/zDnMgRG3Y91p/xLiDRhbZLZOJ9TwdPWjylLV1PT5U3qgllIDLpqiHJYBYUKfY0oUaBANcjsGNdOG5myk5w4Mf14KIT5O3Efclc2rn+GR6x9/HOh0=	\N
+2	fake	sOxcXBr2BuUleLhXhTMBVA==	\N	LfoBEfUIO67UEAHuBFEVWLISll4TgIzChybgIr64/V13UM5jiqsIvwt9kkS2FGbmV1M7y+uE8Y9O0rzf7v+teGfH8LvT6pumB6B2NzmGdR7OrnDGr0r9qd1FGvX9THBkiXuDk1rSE7GCUJDdywdr6C56vRl+qZuuXyQ//dGEVJI=	\N
+\.
+
+
+--
+-- Name: app_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.app_user_id_seq', 2, true);
+
+
+--
+-- Name: app_user app_user_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.app_user
+    ADD CONSTRAINT app_user_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: app_user app_user_user_name_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.app_user
+    ADD CONSTRAINT app_user_user_name_key UNIQUE (user_name);
+
+
+--
+-- Name: TABLE app_user; Type: ACL; Schema: public; Owner: postgres
+--
+
+GRANT ALL ON TABLE public.app_user TO capstone_owner;
+GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.app_user TO capstone_appuser;
+
+
+--
+-- Name: SEQUENCE app_user_id_seq; Type: ACL; Schema: public; Owner: postgres
+--
+
+GRANT ALL ON SEQUENCE public.app_user_id_seq TO capstone_owner;
+GRANT SELECT,USAGE ON SEQUENCE public.app_user_id_seq TO capstone_appuser;
+
+
+--
+-- PostgreSQL database dump complete
+--
+
