@@ -1,0 +1,544 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 10.5
+-- Dumped by pg_dump version 10.5
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: app_user; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.app_user (
+    id integer NOT NULL,
+    user_name character varying(32) NOT NULL,
+    password character varying(32) NOT NULL,
+    role character varying(32),
+    salt character varying(255) NOT NULL,
+    age integer
+);
+
+
+ALTER TABLE public.app_user OWNER TO postgres;
+
+--
+-- Name: app_user_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.app_user_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.app_user_id_seq OWNER TO postgres;
+
+--
+-- Name: app_user_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.app_user_id_seq OWNED BY public.app_user.id;
+
+
+--
+-- Name: itinerary; Type: TABLE; Schema: public; Owner: capstone_appuser
+--
+
+CREATE TABLE public.itinerary (
+    itinerary_id integer NOT NULL,
+    interary_date date
+);
+
+
+ALTER TABLE public.itinerary OWNER TO capstone_appuser;
+
+--
+-- Name: itinerary_itinerary_id_seq; Type: SEQUENCE; Schema: public; Owner: capstone_appuser
+--
+
+CREATE SEQUENCE public.itinerary_itinerary_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.itinerary_itinerary_id_seq OWNER TO capstone_appuser;
+
+--
+-- Name: itinerary_itinerary_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: capstone_appuser
+--
+
+ALTER SEQUENCE public.itinerary_itinerary_id_seq OWNED BY public.itinerary.itinerary_id;
+
+
+--
+-- Name: itinerary_places; Type: TABLE; Schema: public; Owner: capstone_appuser
+--
+
+CREATE TABLE public.itinerary_places (
+    itinerary_id integer NOT NULL,
+    place_id integer NOT NULL
+);
+
+
+ALTER TABLE public.itinerary_places OWNER TO capstone_appuser;
+
+--
+-- Name: itinerary_places_itinerary_id_seq; Type: SEQUENCE; Schema: public; Owner: capstone_appuser
+--
+
+CREATE SEQUENCE public.itinerary_places_itinerary_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.itinerary_places_itinerary_id_seq OWNER TO capstone_appuser;
+
+--
+-- Name: itinerary_places_itinerary_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: capstone_appuser
+--
+
+ALTER SEQUENCE public.itinerary_places_itinerary_id_seq OWNED BY public.itinerary_places.itinerary_id;
+
+
+--
+-- Name: itinerary_places_place_id_seq; Type: SEQUENCE; Schema: public; Owner: capstone_appuser
+--
+
+CREATE SEQUENCE public.itinerary_places_place_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.itinerary_places_place_id_seq OWNER TO capstone_appuser;
+
+--
+-- Name: itinerary_places_place_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: capstone_appuser
+--
+
+ALTER SEQUENCE public.itinerary_places_place_id_seq OWNED BY public.itinerary_places.place_id;
+
+
+--
+-- Name: places; Type: TABLE; Schema: public; Owner: capstone_appuser
+--
+
+CREATE TABLE public.places (
+    place_id integer NOT NULL,
+    place_name character varying(200),
+    google_id character varying(50),
+    type character varying(24)
+);
+
+
+ALTER TABLE public.places OWNER TO capstone_appuser;
+
+--
+-- Name: places_place_id_seq; Type: SEQUENCE; Schema: public; Owner: capstone_appuser
+--
+
+CREATE SEQUENCE public.places_place_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.places_place_id_seq OWNER TO capstone_appuser;
+
+--
+-- Name: places_place_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: capstone_appuser
+--
+
+ALTER SEQUENCE public.places_place_id_seq OWNED BY public.places.place_id;
+
+
+--
+-- Name: user_itinerary; Type: TABLE; Schema: public; Owner: capstone_appuser
+--
+
+CREATE TABLE public.user_itinerary (
+    id integer NOT NULL,
+    itinerary_id integer NOT NULL
+);
+
+
+ALTER TABLE public.user_itinerary OWNER TO capstone_appuser;
+
+--
+-- Name: user_itinerary_id_seq; Type: SEQUENCE; Schema: public; Owner: capstone_appuser
+--
+
+CREATE SEQUENCE public.user_itinerary_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.user_itinerary_id_seq OWNER TO capstone_appuser;
+
+--
+-- Name: user_itinerary_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: capstone_appuser
+--
+
+ALTER SEQUENCE public.user_itinerary_id_seq OWNED BY public.user_itinerary.id;
+
+
+--
+-- Name: user_itinerary_itinerary_id_seq; Type: SEQUENCE; Schema: public; Owner: capstone_appuser
+--
+
+CREATE SEQUENCE public.user_itinerary_itinerary_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.user_itinerary_itinerary_id_seq OWNER TO capstone_appuser;
+
+--
+-- Name: user_itinerary_itinerary_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: capstone_appuser
+--
+
+ALTER SEQUENCE public.user_itinerary_itinerary_id_seq OWNED BY public.user_itinerary.itinerary_id;
+
+
+--
+-- Name: app_user id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.app_user ALTER COLUMN id SET DEFAULT nextval('public.app_user_id_seq'::regclass);
+
+
+--
+-- Name: itinerary itinerary_id; Type: DEFAULT; Schema: public; Owner: capstone_appuser
+--
+
+ALTER TABLE ONLY public.itinerary ALTER COLUMN itinerary_id SET DEFAULT nextval('public.itinerary_itinerary_id_seq'::regclass);
+
+
+--
+-- Name: itinerary_places itinerary_id; Type: DEFAULT; Schema: public; Owner: capstone_appuser
+--
+
+ALTER TABLE ONLY public.itinerary_places ALTER COLUMN itinerary_id SET DEFAULT nextval('public.itinerary_places_itinerary_id_seq'::regclass);
+
+
+--
+-- Name: itinerary_places place_id; Type: DEFAULT; Schema: public; Owner: capstone_appuser
+--
+
+ALTER TABLE ONLY public.itinerary_places ALTER COLUMN place_id SET DEFAULT nextval('public.itinerary_places_place_id_seq'::regclass);
+
+
+--
+-- Name: places place_id; Type: DEFAULT; Schema: public; Owner: capstone_appuser
+--
+
+ALTER TABLE ONLY public.places ALTER COLUMN place_id SET DEFAULT nextval('public.places_place_id_seq'::regclass);
+
+
+--
+-- Name: user_itinerary id; Type: DEFAULT; Schema: public; Owner: capstone_appuser
+--
+
+ALTER TABLE ONLY public.user_itinerary ALTER COLUMN id SET DEFAULT nextval('public.user_itinerary_id_seq'::regclass);
+
+
+--
+-- Name: user_itinerary itinerary_id; Type: DEFAULT; Schema: public; Owner: capstone_appuser
+--
+
+ALTER TABLE ONLY public.user_itinerary ALTER COLUMN itinerary_id SET DEFAULT nextval('public.user_itinerary_itinerary_id_seq'::regclass);
+
+
+--
+-- Data for Name: app_user; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.app_user (id, user_name, password, role, salt, age) FROM stdin;
+1	matt	G/uBLaGaOJYngBDWxu6BGA==	\N	gEQqyiNsratzRFmlgKXkhAlzVTHpjOF95UmPjbxIer36D5o5glUWB1nFEM/zDnMgRG3Y91p/xLiDRhbZLZOJ9TwdPWjylLV1PT5U3qgllIDLpqiHJYBYUKfY0oUaBANcjsGNdOG5myk5w4Mf14KIT5O3Efclc2rn+GR6x9/HOh0=	\N
+2	fake	sOxcXBr2BuUleLhXhTMBVA==	\N	LfoBEfUIO67UEAHuBFEVWLISll4TgIzChybgIr64/V13UM5jiqsIvwt9kkS2FGbmV1M7y+uE8Y9O0rzf7v+teGfH8LvT6pumB6B2NzmGdR7OrnDGr0r9qd1FGvX9THBkiXuDk1rSE7GCUJDdywdr6C56vRl+qZuuXyQ//dGEVJI=	\N
+\.
+
+
+--
+-- Data for Name: itinerary; Type: TABLE DATA; Schema: public; Owner: capstone_appuser
+--
+
+COPY public.itinerary (itinerary_id, interary_date) FROM stdin;
+\.
+
+
+--
+-- Data for Name: itinerary_places; Type: TABLE DATA; Schema: public; Owner: capstone_appuser
+--
+
+COPY public.itinerary_places (itinerary_id, place_id) FROM stdin;
+\.
+
+
+--
+-- Data for Name: places; Type: TABLE DATA; Schema: public; Owner: capstone_appuser
+--
+
+COPY public.places (place_id, place_name, google_id, type) FROM stdin;
+1	Kaya	ChIJUWs5GN3zNIgRPZqcckSz0q4	Food
+2	Gaucho Parrilla Argentina	ChIJHaLGRefzNIgRf_UaVEuRZtE	Food
+14	Piccolo Forno	ChIJ5UoaTrPzNIgR67C6D3W0d-M	Food
+15	The Church Brew Works	ChIJKT2mUrXzNIgRP_zITVG6-1s	Food
+16	NoodleHead	ChIJWQh7rAzyNIgR2SmJQjW3nAs	Food
+17	Whitfield	ChIJv14LvXPyNIgRFQHery66Hd8	Food
+18	Spak Bros.	ChIJ17qAEELyNIgRuOAM6Sm8NMs	Food
+19	Round Corner	ChIJ8zAcVLPzNIgRhsHbKaVgfnM	Food
+20	Nickys Thai	ChIJd7igQwT0NIgRioSao7dLIBc	Food
+21	Badamo Pizza	ChIJ0axKmvfzNIgRdOPqQczWrDs	Food
+22	El Burro	ChIJKcgUmvfzNIgRBLShl8PA9U8	Food
+23	Primantis Bros.	ChIJsW0CpVbxNIgRtyWHiG9FaQU	Food
+24	The Melting Pot	ChIJv-X66E3xNIgR4rFcM-iZBxQ	Food
+25	Monterey Bay Fish Grotto	ChIJPz5dmKX2NIgRgcESndEXxLQ	Food
+26	Hofbräuhaus Pittsburgh	ChIJEfe6zHfxNIgRGR0MD0pIGHU	Food
+27	Claddagh Irish Pub	ChIJQfKuOXbxNIgRijk5RTW_GLQ	Food
+28	Jacks Bar	ChIJWajYRm7xNIgR7zRgTaPbdrw	Food
+29	Delucas Diner	ChIJqb4XHt3zNIgRRGgpc6DL0Lo	Food
+30	Carnegie Science Center	ChIJfR-DoQL0NIgR7MF37UhJIn8	Museum/Art
+31	National Aviary	ChIJW77IvAf0NIgRC6dk0e502kY	Museum/Art
+32	Carnegie Museum of Art	ChIJMfTiXCbyNIgRdvqfBv4hy2M	Museum/Art
+33	Carnegie Museum of National History	ChIJBYa_TybyNIgRwu-E2-TnaIk	Museum/Art
+34	Andy Warhol Museum	ChIJq6qqqofxNIgRMCSmPhfoAcs	Museum/Art
+35	Mattress Factory	ChIJZ7LE6gj0NIgR134NaTB87f4	Museum/Art
+36	Randyland	ChIJAS-KzAn0NIgRPWwtdsC6vBw	Museum/Art
+37	Bicycle Heaven	ChIJeU6jvSL0NIgRmXGevQ1pUjA	Museum/Art
+38	Children’s Museum of Pittsburgh	ChIJKSw4X_jzNIgRdqmTZBPZFso	Museum/Art
+39	PNC Park	ChIJdZvdU_7zNIgRGSPAei2BAbo	Sports
+40	PPG Paints Arena	ChIJVWfnXV7xNIgRqxNXwrkOrFE	Sports
+41	Heinz Field	ChIJBeS8FAL0NIgRyLlVH4nRkIU	Sports
+42	Highmark Stadium	ChIJxfpVFK32NIgRbDCjtotd7Bg	Sports
+43	Point State Park	ChIJjbGBQav2NIgRoARMOwbkqD4	Parks
+44	North Shore Riverfront Park	ChIJ_XJy4wH0NIgReYq_SauuOIY	Parks
+45	Grandview Overlook	ChIJZQMgFq72NIgRGOvv7lfJj9c	Parks
+46	August Wilson Park	ChIJXdFQOt7zNIgRwfod6O3vRNA	Parks
+47	Allegheny Commons Park North Park	ChIJb9TXK_jzNIgRUV4ovwvQpFo	Parks
+48	Frick Park	ChIJkeNi4AjuNIgR3v_lOVZ9h-4	Parks
+49	West End Park Drive	ChIJxbzOpJD2NIgRv7Z4xaPT1OM	Parks
+50	South Park Game Preserve	ChIJw78US9n7NIgRTJ1Yn_JeVB8	Parks
+51	North Park Boathouse	ChIJlc94PwCMNIgRCNGfESv54Rs	Parks
+52	Diesel Club Lounge	ChIJg9Rca2nxNIgRQT4zwdAE_dI	Nightlife
+53	Dees	ChIJxcJGkWnxNIgRsawoXbX2jrU	Nightlife
+54	Mr. Smalls	ChIJDZ5sNKjzNIgR5QIcsD-M-e4	Nightlife
+55	Cavo	ChIJOUWoFN3zNIgRkx2IJ0CQK58	Nightlife
+56	Cattivo	ChIJ0yg081LyNIgR1f3iUqlu3Pw	Nightlife
+57	Club Cafe	ChIJufCTCULxNIgRf0ML_NvB4Kg	Nightlife
+58	Howl At The Moon	ChIJ3yAH01fxNIgRp9PsHrTGgpo	Nightlife
+59	Spirit	ChIJbcJEVVbyNIgRqNV9hr7lGX4	Nightlife
+60	Allegheny Cemetery	ChIJC4DTU0TyNIgR3waNQw80RNU	Nightlife
+\.
+
+
+--
+-- Data for Name: user_itinerary; Type: TABLE DATA; Schema: public; Owner: capstone_appuser
+--
+
+COPY public.user_itinerary (id, itinerary_id) FROM stdin;
+\.
+
+
+--
+-- Name: app_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.app_user_id_seq', 1, true);
+
+
+--
+-- Name: itinerary_itinerary_id_seq; Type: SEQUENCE SET; Schema: public; Owner: capstone_appuser
+--
+
+SELECT pg_catalog.setval('public.itinerary_itinerary_id_seq', 1, false);
+
+
+--
+-- Name: itinerary_places_itinerary_id_seq; Type: SEQUENCE SET; Schema: public; Owner: capstone_appuser
+--
+
+SELECT pg_catalog.setval('public.itinerary_places_itinerary_id_seq', 1, false);
+
+
+--
+-- Name: itinerary_places_place_id_seq; Type: SEQUENCE SET; Schema: public; Owner: capstone_appuser
+--
+
+SELECT pg_catalog.setval('public.itinerary_places_place_id_seq', 1, false);
+
+
+--
+-- Name: places_place_id_seq; Type: SEQUENCE SET; Schema: public; Owner: capstone_appuser
+--
+
+SELECT pg_catalog.setval('public.places_place_id_seq', 60, true);
+
+
+--
+-- Name: user_itinerary_id_seq; Type: SEQUENCE SET; Schema: public; Owner: capstone_appuser
+--
+
+SELECT pg_catalog.setval('public.user_itinerary_id_seq', 1, false);
+
+
+--
+-- Name: user_itinerary_itinerary_id_seq; Type: SEQUENCE SET; Schema: public; Owner: capstone_appuser
+--
+
+SELECT pg_catalog.setval('public.user_itinerary_itinerary_id_seq', 1, false);
+
+
+--
+-- Name: app_user app_user_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.app_user
+    ADD CONSTRAINT app_user_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: app_user app_user_user_name_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.app_user
+    ADD CONSTRAINT app_user_user_name_key UNIQUE (user_name);
+
+
+--
+-- Name: itinerary itinerary_pkey; Type: CONSTRAINT; Schema: public; Owner: capstone_appuser
+--
+
+ALTER TABLE ONLY public.itinerary
+    ADD CONSTRAINT itinerary_pkey PRIMARY KEY (itinerary_id);
+
+
+--
+-- Name: itinerary_places itinerary_places_pkey; Type: CONSTRAINT; Schema: public; Owner: capstone_appuser
+--
+
+ALTER TABLE ONLY public.itinerary_places
+    ADD CONSTRAINT itinerary_places_pkey PRIMARY KEY (itinerary_id, place_id);
+
+
+--
+-- Name: places places_pkey; Type: CONSTRAINT; Schema: public; Owner: capstone_appuser
+--
+
+ALTER TABLE ONLY public.places
+    ADD CONSTRAINT places_pkey PRIMARY KEY (place_id);
+
+
+--
+-- Name: user_itinerary user_itinerary_pkey; Type: CONSTRAINT; Schema: public; Owner: capstone_appuser
+--
+
+ALTER TABLE ONLY public.user_itinerary
+    ADD CONSTRAINT user_itinerary_pkey PRIMARY KEY (itinerary_id, id);
+
+
+--
+-- Name: itinerary_places constraint_name; Type: FK CONSTRAINT; Schema: public; Owner: capstone_appuser
+--
+
+ALTER TABLE ONLY public.itinerary_places
+    ADD CONSTRAINT constraint_name FOREIGN KEY (place_id) REFERENCES public.places(place_id);
+
+
+--
+-- Name: itinerary_places constraint_name_1; Type: FK CONSTRAINT; Schema: public; Owner: capstone_appuser
+--
+
+ALTER TABLE ONLY public.itinerary_places
+    ADD CONSTRAINT constraint_name_1 FOREIGN KEY (itinerary_id) REFERENCES public.itinerary(itinerary_id);
+
+
+--
+-- Name: user_itinerary constraint_name_2; Type: FK CONSTRAINT; Schema: public; Owner: capstone_appuser
+--
+
+ALTER TABLE ONLY public.user_itinerary
+    ADD CONSTRAINT constraint_name_2 FOREIGN KEY (itinerary_id) REFERENCES public.itinerary(itinerary_id);
+
+
+--
+-- Name: user_itinerary constraint_name_3; Type: FK CONSTRAINT; Schema: public; Owner: capstone_appuser
+--
+
+ALTER TABLE ONLY public.user_itinerary
+    ADD CONSTRAINT constraint_name_3 FOREIGN KEY (id) REFERENCES public.app_user(id);
+
+
+--
+-- Name: TABLE app_user; Type: ACL; Schema: public; Owner: postgres
+--
+
+GRANT ALL ON TABLE public.app_user TO capstone_owner;
+GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.app_user TO capstone_appuser;
+
+
+--
+-- Name: SEQUENCE app_user_id_seq; Type: ACL; Schema: public; Owner: postgres
+--
+
+GRANT ALL ON SEQUENCE public.app_user_id_seq TO capstone_owner;
+GRANT SELECT,USAGE ON SEQUENCE public.app_user_id_seq TO capstone_appuser;
+
+
+--
+-- PostgreSQL database dump complete
+--
+
