@@ -2,7 +2,8 @@ package com.techelevator.model;
 
 public class Place {
 	
-	private String place_id;
+	private int place_id;
+	private String google_id;
 	private String name;
 	private double lat;
 	private double lng;
@@ -17,11 +18,11 @@ public class Place {
 		
 	}
 
-	public String getPlace_id() {
+	public int getPlace_id() {
 		return place_id;
 	}
 
-	public void setPlace_id(String place_id) {
+	public void setPlace_id(int place_id) {
 		this.place_id = place_id;
 	}
 
@@ -80,5 +81,14 @@ public class Place {
 	public void setOpen(boolean open) {
 		this.open = open;
 	}
+
+	public String getGoogle_id() {
+		return google_id;
+	}
+
+	public void setGoogle_id(String google_id) {
+		this.google_id = google_id;
+	}
+	
 	
 }

@@ -125,7 +125,8 @@
         {
             for (var i = 0; i < results.length; i++)
             {
-            	//var json = JSON.parse(geometry)
+            	//log the place ids
+            	//add place_id to a collectio to compare to data base place_ids
             	console.log(results[i].place_id);
                 createMarker(results[i], results[i].icon);
             }

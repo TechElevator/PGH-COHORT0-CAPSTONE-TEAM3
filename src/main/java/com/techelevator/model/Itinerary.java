@@ -4,6 +4,9 @@ import java.util.Date;
 
 public class Itinerary {
 	
+	
+	private int id;
+	private int itinerary_id;
 	private String place_id;
 	private String name;
 	private double lat;
@@ -62,6 +65,21 @@ public class Itinerary {
 
 	public void setStartingPoint(String startingPoint) {
 		this.startingPoint = startingPoint;
+	}
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getItinerary_id() {
+		return itinerary_id;
+	}
+
+	public void setItinerary_id(int itinerary_id) {
+		this.itinerary_id = itinerary_id;
 	}
 	
 }
