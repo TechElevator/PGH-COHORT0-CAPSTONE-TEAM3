@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
+
 import com.techelevator.security.PasswordHasher;
 
 @Component
@@ -30,13 +31,19 @@ public class JDBCPlaceDAO implements PlaceDAO {
 		// TODO Auto-generated method stub
 		
 	}
-
+	
 	@Override
-	public Place getPlace() {
-		// TODO Auto-generated method stub
-		return null;
+	public Place getPlaceByGoogleId(String google_id) {
+		Place PlaceByGoogleID = null;
+		String sqlDisplayPlaceInformation = "SELECT * FROM places WHERE google_id = ?;";
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlDisplayPlaceInformation, google_id);
+		if (results.next()) {
+			PlaceByGoogleID = mapPlaceNameToPlaceResults(results);
+		
+		}
+		return PlaceByGoogleID;
 	}
-
+	
 	@Override
 	public List<Place> getAllPlaces() {
 		
@@ -99,6 +106,8 @@ public class JDBCPlaceDAO implements PlaceDAO {
 		
 		return thePlaceResult;
 	}
+
+	
 	
 	
 }
