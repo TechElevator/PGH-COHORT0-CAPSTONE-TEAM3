@@ -5,7 +5,7 @@ import java.util.List;
 public interface PlaceDAO {
 
 	public void addPlace(Place newPlace);
-	public Place getPlace();
+	public Place getPlaceByGoogleId(String google_id);
 	public List <Place> getAllPlaces();
 	public List <Place> getPlacebyType(String type);
 	public List <Place> getPlacebyHours();
