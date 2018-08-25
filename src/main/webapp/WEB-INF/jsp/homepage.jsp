@@ -25,7 +25,7 @@
     function initMap() {
     	  var center = {lat: 40.442169, lng: -79.994957};
     	  var locations = [
-    	    ['Pirmanti Bros', 40.450899, -79.985501, 'Coleslaw lovers only'],
+    	    ['Pirmanti Bros', 40.4508999, -79.985501, 'Coleslaw lovers only'],
     	    ['Gauchos', 40.449032, -79.987431,'Meat'],
     	    ['Nickys thai', 40.452149, -80.016219, 'Spice lovers only'],
     	    ['Giorginos', 40.452080, -80.017048, 'Pizza'],
