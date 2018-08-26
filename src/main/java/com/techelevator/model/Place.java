@@ -5,12 +5,64 @@ public class Place {
 	//private int place_id;
 	private String google_id;
 	private String name;
-	//private double lat;
-	//private double lng;
+	private double lat;
+	private double lng;
+	private int up;
+	private int down;
+	private String description;
+	private String type;
 	//private String photo;
 	//private String type;
 	//private String description;
 	//private boolean open;
+
+	public double getLat() {
+		return lat;
+	}
+
+	public double getLng() {
+		return lng;
+	}
+
+	public int getUp() {
+		return up;
+	}
+
+	public int getDown() {
+		return down;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setLat(double lat) {
+		this.lat = lat;
+	}
+
+	public void setLng(double lng) {
+		this.lng = lng;
+	}
+
+	public void setUp(int up) {
+		this.up = up;
+	}
+
+	public void setDown(int down) {
+		this.down = down;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
 
 	public Place() {
 		

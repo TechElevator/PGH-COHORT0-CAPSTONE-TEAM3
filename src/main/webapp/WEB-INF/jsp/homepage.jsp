@@ -15,22 +15,65 @@
 
     </style>
     
-    <div id="map"></div>
+ <div id="map"></div>
 <script type="text/javascript" src="scripts/index.js"></script>
 <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDb78dI6bMnP859k201BGwYlbxS-9iuUDY&callback=initMap">
 </script>
     
     <script type="text/javascript">
+    
+    
     function initMap() {
     	  var center = {lat: 40.442169, lng: -79.994957};
     	  var locations = [
-    	    ['Pirmanti Bros', 40.4508999, -79.985501, 'Coleslaw lovers only'],
+    	    ['Pirmanti Bros', 40.4508999, -79.985501, 'Coleslaw lovers only',],
     	    ['Gauchos', 40.449032, -79.987431,'Meat'],
     	    ['Nickys thai', 40.452149, -80.016219, 'Spice lovers only'],
     	    ['Giorginos', 40.452080, -80.017048, 'Pizza'],
     	    
     	  ];
+    	  
+    	  //get the data from our dp
+			$.ajax({
+				url:	  'API/placeList', 
+				type: 'GET',
+				dataType: 'json',
+				contentType: 'application/json',
+				success: function(result) {
+					//console.log(result[0].google_id);     					
+					
+					var j; 
+					for(var j = 0; j < Object.keys(result).length; j++){
+			      	
+						createMarker(result[j].google_id, result[j].icon);
+							}
+						}          			
+					})
+			
+		//this function creates the marker
+		// we need to get this info from the datbase
+			function createMarker(place, icon) {
+		        var placeLoc = place.geometry.location;
+		
+		        var marker = new google.maps.Marker({
+		            map: map,
+		            position: place.geometry.location,
+		            icon: {
+		                url: icon,
+		                scaledSize: new google.maps.Size(20, 20) // pixels
+		            },
+		            animation: google.maps.Animation.DROP
+		        });
+		        
+		        google.maps.event.addListener(marker, 'click', function() {
+		            infowindow.setContent(place.name+ '<br>' +place.opening_hours);
+		            infowindow.open(map, this);
+		        });
+		    }
+			
+			
+    	  
     	var map = new google.maps.Map(document.getElementById('map'), {
     	    zoom: 12,
     	    center: center

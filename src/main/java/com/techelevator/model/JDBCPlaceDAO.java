@@ -101,6 +101,12 @@ public class JDBCPlaceDAO implements PlaceDAO {
 		Place thePlaceResult = new Place();
 		thePlaceResult.setGoogle_id(results.getString("google_id")); 
 		thePlaceResult.setName(results.getString("place_name"));
+		thePlaceResult.setDescription(results.getString("description"));
+		thePlaceResult.setLat(results.getDouble("lat"));
+		thePlaceResult.setLat(results.getDouble("llng"));
+		thePlaceResult.setType(results.getString("type"));
+		thePlaceResult.setDown(results.getInt("down"));
+		thePlaceResult.setDown(results.getInt("up"));
 		
 		return thePlaceResult;
 	}
