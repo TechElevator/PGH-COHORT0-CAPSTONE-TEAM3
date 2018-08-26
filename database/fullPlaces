@@ -344,8 +344,13 @@ COPY public.places (place_id, place_name, google_id, type, lat, lng, description
 25	Monterey Bay Fish Grotto	ChIJPz5dmKX2NIgRgcESndEXxLQ	restaurant	40.438629000000000	-80.021370000000000	White-tablecloth surf and or turf	0	0
 47	Allegheny Commons Park North Park	ChIJb9TXK_jzNIgRUV4ovwvQpFo	park	40.453264000000000	-80.008482000000000	Historic park featuring many trees, an aviary, and more	0	0
 20	Nickys Thai	ChIJd7igQwT0NIgRioSao7dLIBc	restaurant	40.452139000000000	-80.016222000000000	Thai food with a a great outdoor space	0	0
+<<<<<<< HEAD
 38	Childrenâ€™s Museum of Pittsburgh	ChIJKSw4X_jzNIgRdqmTZBPZFso	museum	40.452784000000000	-80.006493000000000	Childrens museum with trains, puppets, and more	0	0
 26	HofbrÃ¤uhaus Pittsburgh	ChIJEfe6zHfxNIgRGR0MD0pIGHU	bar	40.428717000000000	-79.964562000000000	German style beer hall	0	0
+=======
+38	Children’s Museum of Pittsburgh	ChIJKSw4X_jzNIgRdqmTZBPZFso	museum	40.452784000000000	-80.006493000000000	Childrens museum with trains, puppets, and more	0	0
+26	Hofbräuhaus Pittsburgh	ChIJEfe6zHfxNIgRGR0MD0pIGHU	bar	40.428717000000000	-79.964562000000000	German style beer hall	0	0
+>>>>>>> ff1605614f19154da4198b215bb406f7e7a4ccc0
 31	National Aviary	ChIJW77IvAf0NIgRC6dk0e502kY	museum	40.453258000000000	-80.009959000000000	A bird zoo with over 500 birds	0	0
 35	Mattress Factory	ChIJZ7LE6gj0NIgR134NaTB87f4	museum	40.457274000000000	-80.012441000000000	Contemporary art museum with room-sized installations	0	0
 27	Claddagh Irish Pub	ChIJQfKuOXbxNIgRijk5RTW_GLQ	bar	40.427956000000000	-79.964775000000000	Irish style pubby goodness	0	0
@@ -546,3 +551,7 @@ GRANT SELECT,USAGE ON SEQUENCE public.app_user_id_seq TO capstone_appuser;
 --
 -- PostgreSQL database dump complete
 --
+<<<<<<< HEAD
+=======
+
+>>>>>>> ff1605614f19154da4198b215bb406f7e7a4ccc0
