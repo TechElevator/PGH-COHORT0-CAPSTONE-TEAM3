@@ -5,29 +5,25 @@ public class Place {
 	//private int place_id;
 	private String google_id;
 	private String name;
-	//private double lat;
-	//private double lng;
+	private double lat;
+	private double lng;
 	//private String photo;
-	//private String type;
-	//private String description;
-	//private boolean open;
+	private String type;
+	private String description;
+	private int up;
+	private int down;
 
-	public Place() {
-		
-		
-		
+	public Place() {	
 	}
 
-	/*
-	public int getPlace_id() {
-		return place_id;
+	public String getGoogle_id() {
+		return google_id;
 	}
 
-	public void setPlace_id(int place_id) {
-		this.place_id = place_id;
+	public void setGoogle_id(String google_id) {
+		this.google_id = google_id;
 	}
-*/
-		
+
 	public String getName() {
 		return name;
 	}
@@ -35,7 +31,7 @@ public class Place {
 	public void setName(String name) {
 		this.name = name;
 	}
-/*
+
 	public double getLat() {
 		return lat;
 	}
@@ -50,14 +46,6 @@ public class Place {
 
 	public void setLng(double lng) {
 		this.lng = lng;
-	}
-
-	public String getPhoto() {
-		return photo;
-	}
-
-	public void setPhoto(String photo) {
-		this.photo = photo;
 	}
 
 	public String getType() {
@@ -76,22 +64,23 @@ public class Place {
 		this.description = description;
 	}
 
-	public boolean isOpen() {
-		return open;
+	public int getUp() {
+		return up;
 	}
 
-	public void setOpen(boolean open) {
-		this.open = open;
-	}
-*/
-	
-	public String getGoogle_id() {
-		return google_id;
+	public void setUp(int up) {
+		this.up = up;
 	}
 
-	public void setGoogle_id(String google_id) {
-		this.google_id = google_id;
+	public int getDown() {
+		return down;
+	}
+
+	public void setDown(int down) {
+		this.down = down;
 	}
 	
 	
+	
+
 }
