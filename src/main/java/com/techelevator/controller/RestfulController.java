@@ -18,6 +18,7 @@ import com.techelevator.model.PlaceDAO;
 public class RestfulController {
 
 	private List<Place> placeList = new ArrayList<Place>();
+	private List<Place> typePlaceList = new ArrayList<Place>();
 	
 	@Autowired
 	private PlaceDAO placeDao;
@@ -33,6 +34,22 @@ public class RestfulController {
 		
 		return placeList;
 	}
+	
+	@RequestMapping(value="API/typePlaceList", method = RequestMethod.GET, produces = "application/json")
+	public List<Place> getPlacesbyTypeInJSON() {
+		
+		typePlaceList = placeDao.getPlacebyType();
+		
+		for (Place i: placeList)  {
+		System.out.println(i.getGoogle_id());
+		}
+		
+		return placeList;
+	}
+	
+	
+	
+	
 	
 	
 	
