@@ -2,10 +2,9 @@
 
 
 .jumbotron {
-	background-image: url("../img/pghOverview.png");
+	background-image: url("../img/headerBG.png");
 	background-size: cover;
-	height: 100%;
-	padding: 5% 0% 5% 0%;
+	height:100%;
 	margin: 0px;
 	align: center;
 	background-color: transparent;
