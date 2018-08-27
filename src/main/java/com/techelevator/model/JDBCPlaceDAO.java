@@ -70,6 +70,10 @@ public List<Place> getPlacebyType(String type) {
         PlaceByType.add(thePlace);
 
     }
+    
+    for(int i= 0; i < PlaceByType.size(); i++) {
+    System.out.println(PlaceByType.get(i).getName());
+    }
     return PlaceByType;
 }
 

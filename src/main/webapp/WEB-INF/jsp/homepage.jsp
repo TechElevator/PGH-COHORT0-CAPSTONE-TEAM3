@@ -37,7 +37,7 @@
 
 						$.each(types,function(index, value) {
 											var name = value.replace(/_/g, " ");
-											html += '<div><label><input type="radio" name = "type" class="types" value="'+ value +'" />'
+											html += '<div><label><input type="radio" name ="type" class="types" value="'+ value +'" />'
 													+ capitalizeFirstLetter(name)
 													+ '</label></div>';
 						});
@@ -50,15 +50,90 @@
 		return string.charAt(0).toUpperCase() + string.slice(1);
 	}
 
+	var type = [];
+
 	// Map will reload places based on what 'type' is selected
 	function renderMapByType() {
-	}
-	selectedTypes = [];
-	$('.types').each(function() {
-		if ($(this).is(':checked')) {
-			selectedTypes.push($(this).val());
+		var center = {
+				lat : 40.442169,
+				lng : -79.994957
+			};
+		
+		var locations = [];
+		//var type = $(".types").val();
+		//console.log(type);
+			
+		type = [];
+		
+		$('.types').each(function() {
+			if ($(this).is(':checked')) {
+				type.push($(this).val());
+				console.log(type);
+			}
+		});
+		
+		
+		$.ajax({
+			url : 'API/typePlaceList/' + type,
+			type : 'GET',
+			dataType : 'json',
+			contentType : 'application/json',
+			success : function(result) {
+				
+				console.log(type);
+				console.log(result);
+
+				
+				var j;
+				for (var j = 0; j < Object.keys(result).length; j++) {
+					//console.log(result[0]); 
+
+					locations.push([ result[j].name, result[j].google_id,
+							result[j].type, result[j].lat, result[j].lng,
+							result[j].description ]);
+					
+					console.log(locations);
+
+					createMarker(result[j]);
+				}
+
+			}
+		})
+
+		//this function creates the marker
+		// we need to get this info from the datbase
+
+		function createMarker(place, icon) {
+
+			var map = new google.maps.Map(document.getElementById('map'), {
+				zoom : 13,
+				center : center
+			});
+
+			var infowindow = new google.maps.InfoWindow({});
+			var marker, count;
+			for (count = 0; count < locations.length; count++) {
+
+				marker = new google.maps.Marker({
+					position : new google.maps.LatLng(locations[count][3],
+							locations[count][4]),
+					map : map,
+					title : locations[count][0],
+					animation : google.maps.Animation.DROP
+				});
+
+				google.maps.event.addListener(marker, 'click', (function(
+						marker, count) {
+					return function() {
+						infowindow.setContent(locations[count][0] + '<br>'
+								+ locations[count][5]);
+						infowindow.open(map, marker);
+					}
+				})(marker, count));
+			}
 		}
-	});
+	}
+	
 
 	function initMap() {
 		var center = {
@@ -133,7 +208,7 @@
 			<tr>
 				<td></td>
 				<td><input type="button" value="Show" id="submit"
-					onclick="renderMap();"> <input type="reset" value="Reset">
+					onclick="renderMapByType();"> <input type="reset" value="Reset">
 				</td>
 			</tr>
 			<tr>

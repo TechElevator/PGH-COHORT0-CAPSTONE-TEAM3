@@ -29,22 +29,25 @@ public class RestfulController {
 		placeList = placeDao.getAllPlaces();
 		
 		for (Place i: placeList)  {
-		System.out.println(i.getGoogle_id());
+		//System.out.println(i.getGoogle_id());
 		}
 		
 		return placeList;
 	}
 	
-	@RequestMapping(value="API/typePlaceList", method = RequestMethod.GET, produces = "application/json")
-	public List<Place> getPlacesbyTypeInJSON() {
+	@RequestMapping(value="API/typePlaceList/{type}", method = RequestMethod.GET, produces = "application/json")
+	public List<Place> getPlacesbyTypeInJSON(@PathVariable String type) {
 		
-		typePlaceList = placeDao.getPlacebyType();
+		typePlaceList = placeDao.getPlacebyType(type);
 		
-		for (Place i: placeList)  {
-		System.out.println(i.getGoogle_id());
+		
+		for (Place i: typePlaceList)  {
+		System.out.println(i.getName());
 		}
 		
-		return placeList;
+		
+		
+		return typePlaceList;
 	}
 	
 	
