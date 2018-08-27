@@ -21,7 +21,8 @@
 
 #logo-container {
 	display: flex;
-	justify-content: center;
+	justify-content: left;
+	margin-left: 120px;
 	height:auto;
 	width: auto;
 	
