@@ -126,7 +126,10 @@
 						marker, count) {
 					return function() {
 						infowindow.setContent(locations[count][0] + '<br>'
-								+ locations[count][5]);
+								+ locations[count][5] + '<br>' + 
+								'<a href="https://maps.googleapis.com/maps/api/place/details/json?placeid='
+										+locations[count][1]+
+										'&fields=name,opening_hours/weekday_text,formatted_address,formatted_phone_number,website&key=AIzaSyCzN_hQI7PADDHGD89Md1kj6DSFFORJmzY"> Get Details  </a>');
 						infowindow.open(map, marker);
 					}
 				})(marker, count));
@@ -190,7 +193,10 @@
 						marker, count) {
 					return function() {
 						infowindow.setContent(locations[count][0] + '<br>'
-								+ locations[count][5]);
+								+ locations[count][5] + '<br>' + 
+								'<a href="https://maps.googleapis.com/maps/api/place/details/json?placeid='
+								+locations[count][1]+
+								'&fields=name,opening_hours/weekday_text,formatted_address,formatted_phone_number,website&key=AIzaSyCzN_hQI7PADDHGD89Md1kj6DSFFORJmzY"> Get Details  </a>');
 						infowindow.open(map, marker);
 					}
 				})(marker, count));
@@ -208,7 +214,9 @@
 			<tr>
 				<td></td>
 				<td><input type="button" value="Show" id="submit"
-					onclick="renderMapByType();"> <input type="reset" value="Reset">
+					onclick="renderMapByType();"> 
+					<input type="button" value="Show All" id ="submit"
+					onclick="initMap();" >
 				</td>
 			</tr>
 			<tr>
