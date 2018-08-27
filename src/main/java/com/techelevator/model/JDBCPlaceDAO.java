@@ -46,31 +46,25 @@ public Place getPlaceByGoogleId(String google_id) {
 
 @Override
 public List<Place> getAllPlaces() {
-    
-    
         LinkedList<Place> Place = new LinkedList<>();
         String sqlStatement = "SELECT * FROM places;";
-
         SqlRowSet results = jdbcTemplate.queryForRowSet(sqlStatement);
-
         while (results.next()) {
             Place.add(mapPlaceNameToPlaceResults(results));
         }
-        return Place;
-    
+        return Place; 
 }
 
 @Override
 public List<Place> getPlacebyType(String type) {
-    LinkedList<Place> PlaceByType = new LinkedList<Place>();
+    LinkedList<Place> PlaceByType = new LinkedList<>();
     String sqlDisplayPlaceInformation = "SELECT * FROM places WHERE type = ?;";
     SqlRowSet results = jdbcTemplate.queryForRowSet(sqlDisplayPlaceInformation, type);
-    if (results.next()) {
-        Place thePlace = mapPlaceNameToPlaceResults(results);
-        PlaceByType.add(thePlace);
+    while (results.next()) {
+        //Place thePlace = mapPlaceNameToPlaceResults(results);
+        PlaceByType.add(mapPlaceNameToPlaceResults(results));
 
     }
-    
     for(int i= 0; i < PlaceByType.size(); i++) {
     System.out.println(PlaceByType.get(i).getName());
     }
