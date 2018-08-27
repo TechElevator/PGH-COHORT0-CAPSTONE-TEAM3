@@ -84,16 +84,6 @@ public List<Place> getPlacebyProximity(double lat, double lng) {
 }
 
 
-private Place mapRowToPlace(SqlRowSet results) {
-
-    Place thePlace = new Place();
-    
-    thePlace.setName(results.getString("place_name"));  
-    thePlace.setGoogle_id(results.getString("google_id"));
-    return thePlace;
-}
-
-
 private Place mapPlaceNameToPlaceResults(SqlRowSet results) {
 
     Place thePlaceResult = new Place();
