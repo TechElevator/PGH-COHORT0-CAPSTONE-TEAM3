@@ -50,18 +50,18 @@
 			<div class="container-fluid">
 				<ul class="nav navbar-nav">
 					<c:url var="homePageHref" value="/" />
-					<li><a href="${homePageHref}">Home</a></li>
+					<li class="navbar-font-face"><a href="${homePageHref}">Home</a></li>
 					<c:url var="hotspotsBurgh" value="/hotspotsBurgh" />
-					<li><a href="${hotspotsBurgh}">Hotspots In The Burgh </a></li>
+					<li class="navbar-font-face"><a href="${hotspotsBurgh}">Hotspots In The Burgh </a></li>
 					
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<c:choose>
 						<c:when test="${empty currentUser}">
 							<c:url var="newUserHref" value="/users/new" />
-							<li><a href="${newUserHref}">Sign Up</a></li>
+							<li class="navbar-font-face"><a href="${newUserHref}">Sign Up</a></li>
 							<c:url var="loginHref" value="/login" />
-							<li><a href="${loginHref}">Log In</a></li>
+							<li class="navbar-font-face"><a href="${loginHref}">Log In</a></li>
 						</c:when>
 						<c:otherwise>
 						
@@ -71,9 +71,9 @@
 							</form>
 							<c:if test="${not empty currentUser}">
 							<c:url var="profileHref" value="/users/${currentUser}/profile"/>
-						<li><a href="${profileHref }" id="currentUser">${currentUser.userName}</a></li>
+						<li class="navbar-font-face"><a href="${profileHref }" id="currentUser">${currentUser.userName}</a></li>
 						</c:if>	
-							<li><a id="logoutLink" href="#">Log Out</a></li>
+							<li class="navbar-font-face"><a id="logoutLink" href="#">Log Out</a></li>
 						</c:otherwise>
 					</c:choose>
 				</ul>
