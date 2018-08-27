@@ -1,8 +1,10 @@
-
+.header-font-face {
+	font-family: "SignPainter-HouseScript", Avenir, sans-serif;
+}
 
 
 .jumbotron {
-	background-image: url("../img/headerBG.png");
+	background-image: url("../img/PGH-BG.png");
 	background-size: cover;
 	height: 100%;
 	padding: 5% 0% 5% 0%;
@@ -13,13 +15,14 @@
 }
 
 #logo {
-	height: 100px;
+	height: 200px;
 	width:auto;
 }
 
 #logo-container {
 	display: flex;
-	justify-content: center;
+	justify-content: left;
+	margin-left: 120px;
 	height:auto;
 	width: auto;
 	
@@ -44,6 +47,7 @@
 	text-align:center;
 	display:flex;
 	justify-content:center;
+	font-size:75px;
 	
 }
 .category-img {

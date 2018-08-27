@@ -12,6 +12,17 @@
 }
 </style>
 
+<div>
+
+<div class="small-box">
+
+<h1 class="h1-center header-font-face">Hotspots In The Burgh</h1>
+
+</div>
+
+
+</div>
+
 
 
 
