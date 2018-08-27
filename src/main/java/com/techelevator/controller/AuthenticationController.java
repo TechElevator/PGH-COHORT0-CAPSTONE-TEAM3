@@ -37,7 +37,7 @@ public class AuthenticationController {
 			if(destination != null && ! destination.isEmpty()) {
 				return "redirect:" + destination;
 			} else {
-				return "redirect:/";
+				return "redirect:/hotspotsBurgh";
 			}
 		} else {
 			return "redirect:/login";
