@@ -27,4 +27,9 @@ public class ViewController {
 	}
 	
 	
+	@RequestMapping (path="/users/{currentUser}/profile", method=RequestMethod.GET)
+	public String displayProfilePage() {
+		return "profile";
+	}
+	
 }

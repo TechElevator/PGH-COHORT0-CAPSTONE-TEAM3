@@ -2,6 +2,24 @@
 	font-family: "SignPainter-HouseScript", Avenir, sans-serif;
 }
 
+.paragraph-font-face{
+	font-family: Avenir, sans-serif;
+}
+
+#map {
+	height: 400px;
+	width: 1000px;
+	
+}
+
+#map-container {
+	width: 100%;
+	height: auto;
+	display: flex;
+	justify-content: center;
+	margin: 30px 0px 30px 0px;
+}
+
 
 .jumbotron {
 	background-image: url("../img/PGH-BG.png");
@@ -15,7 +33,7 @@
 }
 
 #logo {
-	height: 200px;
+	height: 150px;
 	width:auto;
 }
 
@@ -40,7 +58,14 @@
 	width:auto;
 	height: auto;
 	text-align:center;
+	display: flex;
+	justify-content: center;
 	
+}
+
+.p-center {
+	text-align: center;
+	width: auto;
 }
 
 .h1-center {
@@ -63,6 +88,60 @@
 	display: flex;
 	justify-content: space-around;
 	height:300px;
-	
-	
+}
+
+
+#search-type-bar {
+	height: auto;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+#itin-container {
+	width: 100%;
+	height:auto;
+	display: flex;
+	justify-content: center;
+	margin: 40px 0px 30px 0px;
+}
+
+#location1 {
+	height:100px;
+	width: 200px;
+	background-color: red;
+}
+#location2 {
+	height:100px;
+	width: 200px;
+	background-color: orange;
+}
+#location3 {
+	height:100px;
+	width: 200px;
+	background-color: yellow;
+}
+#location4 {
+	height:100px;
+	width: 200px;
+	background-color: green;
+}
+#location5 {
+	height:100px;
+	width: 200px;
+	background-color: blue;
+}
+
+#how-it-works-container {
+	width: 100%;
+	height: auto;
+	display: inline-block;
+	justify-content: center;
+}
+
+.how-it-works {
+	width: auto;
+	height: auto;
+	float: left;
+	text-align: right;
 }

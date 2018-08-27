@@ -5,28 +5,53 @@
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
 
-<style>
-#map {
-	height: 400px;
-	width: 400px;
-}
-</style>
 
-<div>
 
-<div class="small-box">
 
-<h1 class="h1-center header-font-face">Hotspots In The Burgh</h1>
+
+
+
+
+	<div class="small-box">
+		<h1 class="h1-center header-font-face">Hotspots In The Burgh</h1>
+		
+	</div>
+	
+	<div id="how-it-works-container">
+		
+		<div class="p-center">
+		<h3 class="header-font-face">How It Works</h3>
+		</div>
+		
+		<div class="how-it-works">
+		<p class="paragraph-font-face p-center">We have an amazing list of partnered comapnies that we have marked on the map for you to choose from. If you would like to filter what type
+		of spot you are looking for, use the buttons below the map and it will reload the map with the spots that you have selected. To view more 
+		information about a specific spot click on the marker and then click "Get Details". When you are sure you would like to visit that spot, click
+		the "Add Spot" and you will then see your itinerary, above the map, get one slot filled with your selected spot. Have fun creating your personalized
+		custom city tour.</p>
+		</div>
+	</div>
+
+
+<div id="itin-container">
+
+<div id="location1"></div>
+<div id="location2"></div>
+<div id="location3"></div>
+<div id="location4"></div>
+<div id="location5"></div>
+
+</div>
+
+<div id="map-container">
+
+<div id="map" ></div>
 
 </div>
 
 
-</div>
 
 
-
-
-<div id="map"></div>
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script async defer
 	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDb78dI6bMnP859k201BGwYlbxS-9iuUDY&callback=initMap">
@@ -202,11 +227,11 @@
 					title : locations[count][0],
 					animation : google.maps.Animation.DROP
 				});
-				var placeDetails = 'https://maps.googleapis.com/maps/api/place/details/json?placeid=' + locations[count][1]+'&fields=name,opening_hours/weekday_text,formatted_address,formatted_phone_number,website&key=AIzaSyCzN_hQI7PADDHGD89Md1kj6DSFFORJmzY';
-				console.log(placeDetails);
+				
 				google.maps.event.addListener(marker, 'click', (function(
 						marker, count) {
 					return function() {
+				var placeDetails = 'https://maps.googleapis.com/maps/api/place/details/json?placeid=' + locations[count][1]+'&fields=name,opening_hours/weekday_text,formatted_address,formatted_phone_number,website&key=AIzaSyCzN_hQI7PADDHGD89Md1kj6DSFFORJmzY';
 						infowindow.setContent(locations[count][0] + '<br>'
 								+ locations[count][5] + '<br>' + 
 								'<a href=" ' + placeDetails + '"> Get Details  </a>');

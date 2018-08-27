@@ -53,16 +53,7 @@
 					<li><a href="${homePageHref}">Home</a></li>
 					<c:url var="hotspotsBurgh" value="/hotspotsBurgh" />
 					<li><a href="${hotspotsBurgh}">Hotspots In The Burgh </a></li>
-					<c:if test="${not empty currentUser}">
-						<c:url var="dashboardHref" value="/users/${currentUser}" />
-						<li><a href="${dashboardHref}">New Tour</a></li>
-						<c:url var="newMessageHref" value="/users/${currentUser}/messages/new" />
-						<li><a href="${newMessageHref}">Saved Tours</a></li>
-						<c:url var="sentMessagesHref" value="/users/${currentUser}/messages" />
-						<li><a href="${sentMessagesHref}">Suggestions</a></li>
-						<c:url var="changePasswordHref" value="/users/${currentUser}/changePassword" />
-						<li><a href="${changePasswordHref}">Change Password</a></li>
-					</c:if>
+					
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<c:choose>
@@ -79,7 +70,8 @@
 							<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
 							</form>
 							<c:if test="${not empty currentUser}">
-						<li><a id="currentUser">Welcome Back: ${currentUser.userName}</a></li>
+							<c:url var="profileHref" value="/users/${currentUser}/profile"/>
+						<li><a href="${profileHref }" id="currentUser">${currentUser.userName}</a></li>
 						</c:if>	
 							<li><a id="logoutLink" href="#">Log Out</a></li>
 						</c:otherwise>

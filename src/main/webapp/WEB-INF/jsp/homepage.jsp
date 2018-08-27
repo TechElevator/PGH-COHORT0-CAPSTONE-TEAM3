@@ -11,7 +11,7 @@
 <div>
 
 	<div class="small-box">
-		Tours 'N At was founded in Pittsburgh, Pennsylvania in 2018. We aim 
+		<p class="paragraph-font-face">Tours 'N At was founded in Pittsburgh, Pennsylvania in 2018. We aim 
 		to promote local places in the Pittsburgh area that want to participate in our city 
 		tours. We allow the customer to select five of their favorite places that we have
 		partnered with to build their own customer tour. They can save their tours, and view
@@ -19,6 +19,7 @@
 		local bars, delicious resturaunts, relaxing parks, exciting sporting events, and for the 
 		night owls favorite clubs. Take a look at all our partnered locations and sign up for your
 		own custom Tour 'N At.
+		</p>
 	</div>
 
 </div>
