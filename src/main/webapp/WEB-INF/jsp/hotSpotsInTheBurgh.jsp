@@ -52,6 +52,8 @@
 
 	var type = [];
 
+	
+	
 	// Map will reload places based on what 'type' is selected
 	function renderMapByType() {
 		var center = {
@@ -179,6 +181,7 @@
 
 			var infowindow = new google.maps.InfoWindow({});
 			var marker, count;
+			
 			for (count = 0; count < locations.length; count++) {
 
 				marker = new google.maps.Marker({
@@ -188,15 +191,14 @@
 					title : locations[count][0],
 					animation : google.maps.Animation.DROP
 				});
-
+				var placeDetails = 'https://maps.googleapis.com/maps/api/place/details/json?placeid=' + locations[count][1]+'&fields=name,opening_hours/weekday_text,formatted_address,formatted_phone_number,website&key=AIzaSyCzN_hQI7PADDHGD89Md1kj6DSFFORJmzY';
+				console.log(placeDetails);
 				google.maps.event.addListener(marker, 'click', (function(
 						marker, count) {
 					return function() {
 						infowindow.setContent(locations[count][0] + '<br>'
 								+ locations[count][5] + '<br>' + 
-								'<a href="https://maps.googleapis.com/maps/api/place/details/json?placeid='
-								+locations[count][1]+
-								'&fields=name,opening_hours/weekday_text,formatted_address,formatted_phone_number,website&key=AIzaSyCzN_hQI7PADDHGD89Md1kj6DSFFORJmzY"> Get Details  </a>');
+								'<a href=" ' + placeDetails + '"> Get Details  </a>');
 						infowindow.open(map, marker);
 					}
 				})(marker, count));
