@@ -51,6 +51,8 @@
 				<ul class="nav navbar-nav">
 					<c:url var="homePageHref" value="/" />
 					<li><a href="${homePageHref}">Home</a></li>
+					<c:url var="hotspotsBurgh" value="/hotspotsBurgh" />
+					<li><a href="${hotspotsBurgh}">Hotspots In The Burgh </a></li>
 					<c:if test="${not empty currentUser}">
 						<c:url var="dashboardHref" value="/users/${currentUser}" />
 						<li><a href="${dashboardHref}">New Tour</a></li>

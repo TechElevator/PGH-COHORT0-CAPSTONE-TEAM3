@@ -21,5 +21,10 @@ public class ViewController {
 	}
 	
 	
+	@RequestMapping (path="/hotspotsBurgh", method=RequestMethod.GET)
+	public String displayHotspotsBurghPage() {
+		return "hotSpotsInTheBurgh";
+	}
+	
 	
 }
