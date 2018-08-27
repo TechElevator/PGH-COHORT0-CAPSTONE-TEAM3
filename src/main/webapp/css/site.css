@@ -145,3 +145,21 @@
 	float: left;
 	text-align: right;
 }
+
+#profile-sub-navbar {
+	width: auto;
+	height: auto;
+	display: flex;
+	justify-content: center;
+}
+
+.sub-navbar-button {
+	width: auto;
+	height: auto;
+	margin: 0px 10px 0px 10px;
+}
+
+#avatar {
+	height: auto;
+	width: auto;
+}
