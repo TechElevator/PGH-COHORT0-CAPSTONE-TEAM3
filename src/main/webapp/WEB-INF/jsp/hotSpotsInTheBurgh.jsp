@@ -228,10 +228,18 @@
 					animation : google.maps.Animation.DROP
 				});
 				
+<<<<<<< HEAD
 				google.maps.event.addListener(marker, 'click', (function(
 						marker, count) {
 					return function() {
 				var placeDetails = 'https://maps.googleapis.com/maps/api/place/details/json?placeid=' + locations[count][1]+'&fields=name,opening_hours/weekday_text,formatted_address,formatted_phone_number,website&key=AIzaSyCzN_hQI7PADDHGD89Md1kj6DSFFORJmzY';
+=======
+				//console.log(placeDetails);
+				google.maps.event.addListener(marker, 'click', (function(
+						marker, count) {
+					return function() {
+						var placeDetails = 'https://maps.googleapis.com/maps/api/place/details/json?placeid=' + locations[count][1]+'&fields=name,opening_hours/weekday_text,formatted_address,formatted_phone_number,website&key=AIzaSyCzN_hQI7PADDHGD89Md1kj6DSFFORJmzY';
+>>>>>>> 52f15af667b5fadec40ca946fed8d956122e520a
 						infowindow.setContent(locations[count][0] + '<br>'
 								+ locations[count][5] + '<br>' + 
 								'<a href=" ' + placeDetails + '"> Get Details  </a>');

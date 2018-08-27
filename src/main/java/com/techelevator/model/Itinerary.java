@@ -1,85 +1,117 @@
 package com.techelevator.model;
 
-import java.util.Date;
-
 public class Itinerary {
 	
 	
-	private int id;
+	private int user_id;
 	private int itinerary_id;
-	private String place_id;
-	private String name;
-	private double lat;
-	private double lng;
-	private Date date;
-	private String startingPoint;  //this could be the google place id, 
-									//not sure if we need lng/lat for this yet
+	private String google_id_one;
+	private String google_id_two;
+	private String google_id_three;
+	private String google_id_four;
+	private String google_id_five;
+	private boolean visible;
+	
+	
 	
 	public Itinerary() {
 		
 	}
 
-	public String getPlace_id() {
-		return place_id;
+
+
+	public int getUser_id() {
+		return user_id;
 	}
 
-	public String getName() {
-		return name;
+
+
+	public void setUser_id(int user_id) {
+		this.user_id = user_id;
 	}
 
-	public double getLat() {
-		return lat;
-	}
 
-	public double getLng() {
-		return lng;
-	}
-
-	public Date getDate() {
-		return date;
-	}
-	
-	public String getStartingPoint() {
-		return startingPoint;
-	}
-
-	public void setPlace_id(String place_id) {
-		this.place_id = place_id;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public void setLat(double lat) {
-		this.lat = lat;
-	}
-
-	public void setLng(double lng) {
-		this.lng = lng;
-	}
-
-	public void setDate(Date date) {
-		this.date = date;
-	}
-
-	public void setStartingPoint(String startingPoint) {
-		this.startingPoint = startingPoint;
-	}
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
 
 	public int getItinerary_id() {
 		return itinerary_id;
 	}
 
+
+
 	public void setItinerary_id(int itinerary_id) {
 		this.itinerary_id = itinerary_id;
 	}
-	
+
+
+
+	public String getGoogle_id_one() {
+		return google_id_one;
+	}
+
+
+
+	public void setGoogle_id_one(String google_id_one) {
+		this.google_id_one = google_id_one;
+	}
+
+
+
+	public String getGoogle_id_two() {
+		return google_id_two;
+	}
+
+
+
+	public void setGoogle_id_two(String google_id_two) {
+		this.google_id_two = google_id_two;
+	}
+
+
+
+	public String getGoogle_id_three() {
+		return google_id_three;
+	}
+
+
+
+	public void setGoogle_id_three(String google_id_three) {
+		this.google_id_three = google_id_three;
+	}
+
+
+
+	public String getGoogle_id_four() {
+		return google_id_four;
+	}
+
+
+
+	public void setGoogle_id_four(String google_id_four) {
+		this.google_id_four = google_id_four;
+	}
+
+
+
+	public String getGoogle_id_five() {
+		return google_id_five;
+	}
+
+
+
+	public void setGoogle_id_five(String google_id_five) {
+		this.google_id_five = google_id_five;
+	}
+
+
+
+	public boolean isVisible() {
+		return visible;
+	}
+
+
+
+	public void setVisible(boolean visible) {
+		this.visible = visible;
+	}
+
 }
