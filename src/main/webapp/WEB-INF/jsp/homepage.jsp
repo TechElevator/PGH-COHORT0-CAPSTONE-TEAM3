@@ -32,18 +32,21 @@
 <div class="box-container">
 
 <div class="small-box">
-<img src="img/andrew.jpg" class="img-circle"/>
+	<c:url var="andrew" value="img/andrew.jpg"/>
+	<img src="${andrew}" class="img-circle"/>
 <h3 class="header-font-face">Andrew</h3>
 
 </div>
 
 <div class="small-box">
-<img src="img/matt.jpg" class="img-circle"/>
+<c:url var="matt" value="img/matt.jpg"/>
+<img src="${matt}" class="img-circle"/>
 <h3 class="header-font-face">Matt</h3>
 </div>
 
 <div class="small-box">
-<img src="img/ryan.jpg" class="img-circle"/>
+<c:url var="ryan" value="img/ryan.jpg"/>
+<img src="${ryan}" class="img-circle"/>
 <h3 class="header-font-face">Ryan</h3>
 </div>
 

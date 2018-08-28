@@ -7,7 +7,8 @@
 
 
 <div class="small-box">
-<img src="/img/avatar.jpg" class="img-circle"/>
+	<c:url var="avatar" value="/img/avatar.png"/>
+	<img src="${avatar}" class="img-circle"/>
 </div>
 
 <h1 class="h1-center header-font-face">Welcome Back ${currentUser.userName}</h1>
