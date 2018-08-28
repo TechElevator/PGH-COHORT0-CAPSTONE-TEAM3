@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.techelevator.model.Itinerary;
 import com.techelevator.model.ItineraryDAO;
+
 import com.techelevator.model.User;
+
 import com.techelevator.model.UserDAO;
 
 @Controller
@@ -28,6 +30,9 @@ public class ViewController {
 	
 	@Autowired
 	UserDAO userDao;
+	
+	@Autowired
+	private ItineraryDAO itineraryDao;
 	
 	@RequestMapping (path="/", method=RequestMethod.GET)
 	public String displayHomepage() {
@@ -44,6 +49,7 @@ public class ViewController {
 	
 	
 	@RequestMapping (path="/users/{currentUser}/profile", method=RequestMethod.GET)
+
 	public String displayProfilePage(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		
@@ -72,8 +78,13 @@ public class ViewController {
 		 System.out.println(Itineraries.get(0).getName_five());
 	
 		 
+	
+	
+
 		
 		return "profile";
 	}
+	
+	
 	
 }

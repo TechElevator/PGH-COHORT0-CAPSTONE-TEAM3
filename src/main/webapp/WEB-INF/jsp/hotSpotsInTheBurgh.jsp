@@ -59,6 +59,9 @@
 </script>
 
 <script type="text/javascript">
+	//get the type marker info
+	//of the markers dont have info create function for this
+	
 	
 	$ = jQuery;
 	$(document)
@@ -77,6 +80,10 @@
 						});
 						$('#type_holder').html(html);
 					});
+	//*****************************************************************
+	
+	
+	
 	// Helper method to capitalize first letter of input
 	function capitalizeFirstLetter(string) {
 		return string.charAt(0).toUpperCase() + string.slice(1);
@@ -85,22 +92,19 @@
 	
 	
 	// Map will reload places based on what 'type' is selected
-	function renderMapByType() {
+function renderMapByType() {
 		var center = {
 				lat : 40.442169,
 				lng : -79.994957
 			};
 		
 		var locations = [];
-		//var type = $(".types").val();
-		//console.log(type);
-			
-		type = [];
+		var type = [];
 		
 		$('.types').each(function() {
 			if ($(this).is(':checked')) {
 				type.push($(this).val());
-				console.log(type);
+				//console.log(type);
 			}
 		});
 		
@@ -112,7 +116,7 @@
 			contentType : 'application/json',
 			success : function(result) {
 				
-				console.log(type);
+				//console.log(type);
 				//console.log(result);
 				
 				var j;
@@ -122,42 +126,78 @@
 							result[j].type, result[j].lat, result[j].lng,
 							result[j].description ]);
 					
-					console.log(locations);
+					//console.log(locations[j]);
 					createMarker(result[j]);
 				}
 			}
 		})
-		//this function creates the marker
-		// we need to get this info from the datbase
-		function createMarker(place, icon) {
-			var map = new google.maps.Map(document.getElementById('map'), {
-				zoom : 13,
-				center : center
-			});
-			var infowindow = new google.maps.InfoWindow({});
-			var marker, count;
-			for (count = 0; count < locations.length; count++) {
-				marker = new google.maps.Marker({
-					position : new google.maps.LatLng(locations[count][3],
-							locations[count][4]),
-					map : map,
-					title : locations[count][0],
-					animation : google.maps.Animation.DROP
-				});
-				google.maps.event.addListener(marker, 'click', (function(
-						marker, count) {
-					return function() {
-						var placeDetails = 'https://maps.googleapis.com/maps/api/place/details/json?placeid=' + locations[count][1]+'&fields=name,opening_hours/weekday_text,formatted_address,formatted_phone_number,website&key=AIzaSyCzN_hQI7PADDHGD89Md1kj6DSFFORJmzY';
+	
 		
-						infowindow.setContent(locations[count][0] + '<br>'+ locations[count][5] + '<br>' + '<input type="button" onclick="getDetails();" value="Get Details" >');
-					
-	infowindow.open(map, marker);
+		
+				function createMarker(place, icon) {
+					var map = new google.maps.Map(document.getElementById('map'), {
+						zoom : 13,
+						center : center
+					});
+					var infowindow = new google.maps.InfoWindow({});
+					var marker, count;
+					for (count = 0; count < locations.length; count++) {
+						marker = new google.maps.Marker({
+							position : new google.maps.LatLng(locations[count][3],
+									locations[count][4]),
+							map : map,
+							title : locations[count][0],
+							animation : google.maps.Animation.DROP
+						});
+						
+						
+						google.maps.event.addListener(marker, 'click', (function(
+								marker, count) {
+							return function() {
+								infowindow.setContent(locations[count][0] + '<br>'+ locations[count][5] + '<br>' + '<input type="button" id= "details" value="Get Details" >');
+							
+			infowindow.open(map, marker);
+			
+			//get the details when clicked
+			$("#details").click(function(){
+				$.ajax({
+					url:	 'https://maps.googleapis.com/maps/api/place/details/json?placeid=' + locations[count][1]+'&fields=name,opening_hours/weekday_text,formatted_address,formatted_phone_number,website&key=AIzaSyCzN_hQI7PADDHGD89Md1kj6DSFFORJmzY', 
+					type: 'GET',
+					dataType: 'json',
+					contentType: 'application/json',
+					success: function(result) {
+						console.log(result);
+						
+						$("#deets-img-container").empty();
+	        				$("#deets-title").empty();
+	        				$("#deets-address").empty();
+	        				$("#deets-website").empty();
+	        				$("#deets-hoursOrPhone").empty();
+	        				
+	        				
+	        				
+	        				
+	        				
+	        				
+	        				$("#deets-img-container").append('<img src="img/400x200/' + locations[count][1] + '.jpg"' + ' alt="no alt for img">');
+	        				$("#deets-title").append(result.result.name);
+	        				$("#deets-address").append(result.result.formatted_address);
+	        				$("#deets-website").append('<a href="' + result.result.website +'">Check out their site to learn more</a>');
+	        				$("#deets-hoursOrPhone").append(result.result.hasOwnProperty("opening_hours") ? result.result.opening_hours.weekday_text : result.result.formatted_phone_number  +"<br>"+' hours not available');
+	        				
+									}          			
+							})
+						});
+			
+							}
+						})(marker, count));
 					}
-				})(marker, count));
-			}
-		}
+				}
 	}
 	
+	
+	
+//***********************************************************************	
 	function initMap() {
 		var center = {
 			lat : 40.442169,
@@ -217,18 +257,35 @@
 		        				dataType: 'json',
 		        				contentType: 'application/json',
 		        				success: function(result) {
-		        					console.log(result.result.name);
-		        					//var html = '';
-		        					//html += '<div>"'+result.result.name+'"</div>';
+		        					console.log(result);
+		        				
 		        					
-		        					//if the object dosent have the info what do we do??????????????
-							$("#appendDetails").append(result.result.name + '<br>' +result.result.formatted_address + "<br>" + result.result.opening_hours.weekday_text);
-		        								}          			
-										})
-									});
+		        				var webLink = result.result.website;
+		        				$("#deets-img-container").empty();
+		        				$("#deets-title").empty();
+		        				$("#deets-address").empty();
+		        				$("#deets-website").empty();
+		        				$("#deets-hoursOrPhone").empty();
+		        				
+		        				
+		        				
+		        				
+		        				
+		        				
+		        				$("#deets-img-container").append('<img src="img/400x200/' + locations[count][1] + '.jpg"' + ' alt="no alt for img">');
+		        				$("#deets-title").append(result.result.name);
+		        				$("#deets-address").append(result.result.formatted_address);
+		        				$("#deets-website").append('<a href="' + result.result.website +'">Check out their site to learn more</a>');
+		        				
+		        				var hoursOrPhone
+		        				
+		        				$("#deets-hoursOrPhone").append(result.result.hasOwnProperty("opening_hours") ? result.result.opening_hours.weekday_text : result.result.formatted_phone_number  +"<br>"+' hours not available');
+		        				
+		        				
 							
-							
-						
+												}
+											})
+										});
 					}
 				})(marker, count));
 			}
@@ -238,7 +295,7 @@
 
 
 
-<div style="float: left; width: 400;">
+<div>
 	<form name="frm_map" id="frm_map">
 		<table>
 			<tr>
@@ -261,9 +318,23 @@
 	</form>
 </div>
 
-<div id="appendDetails">
-</div>
 
+<div id="location-deets-container">
+
+	<div id="deets-img-container"></div>
+	<div id="deets-info-container">
+		
+		<div id="deets-title"></div>
+		<div id="deets-address"></div>
+		<div id="deets-website"></div>
+		<div id="deets-hoursOrPhone"></div>
+		
+		
+		
+		
+	</div>
+
+</div>
 
 
 

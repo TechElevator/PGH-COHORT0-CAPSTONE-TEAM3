@@ -49,11 +49,14 @@ public class JDBCItineraryDAO implements ItineraryDAO {
 	
 
 	@Override
-	public List<Itinerary> getItinerarysByUser(int user_id) {
+	public List<Itinerary> getItinerarysByUser(int id) {
 
 		   LinkedList<Itinerary> itineraryByUser = new LinkedList<>();
-		   String sqlSearchByUsername ="SELECT * FROM itineraries WHERE user_id = ?;";
-		    SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSearchByUsername, user_id);
+		   String sqlSearchByUsername ="Select * \n" + 
+		   		"from itineraries i\n" + 
+		   		 
+		   		"where user_id = ?";
+		    SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSearchByUsername, id);
 		    while (results.next()) {
 		   
 		    	itineraryByUser.add(mapRowToItinerary(results));
@@ -69,7 +72,10 @@ public class JDBCItineraryDAO implements ItineraryDAO {
 	@Override
 	public List<Itinerary> getItineraryforGuests() {
 		 LinkedList<Itinerary> allItineraries = new LinkedList<>();
+
 		   String sqlSearchByUsername ="SELECT * FROM itineraries;";
+
+
 		    SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSearchByUsername);
 		    while (results.next()) {
 		       
@@ -97,6 +103,7 @@ public class JDBCItineraryDAO implements ItineraryDAO {
 
 		return theItinerary;
 	}
+	
 	
 	
 	
