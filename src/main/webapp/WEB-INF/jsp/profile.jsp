@@ -39,4 +39,26 @@
 </div>
 
 
+<div id="itinerary-container">
+
+	<c:forEach items="${itinerary}" var="itinerary">
+	<div id="itin-container">
+		
+		<form method="GET" action="profile">
+			
+		<div id="location1">${itinerary.place_Name}</div>
+		<div id="location2"></div>
+		<div id="location3"></div>
+		<div id="location4"></div>
+		<div id="location5"></div>
+		
+		</form>
+	
+	</div>
+	
+	</c:forEach>
+
+</div>
+
+
 <c:import url="/WEB-INF/jsp/footer.jsp" />

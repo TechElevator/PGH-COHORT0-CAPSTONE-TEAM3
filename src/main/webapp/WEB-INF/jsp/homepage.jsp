@@ -25,15 +25,7 @@
 </div>
 
 <br>
-<div id="itin-container">
 
-<div id="location1"></div>
-<div id="location2"></div>
-<div id="location3"></div>
-<div id="location4"></div>
-<div id="location5"></div>
-
-</div>
 <br>
 
 
@@ -42,7 +34,7 @@
 
 <div class="small-box">
 	<c:url var="andrew" value="img/andrew.jpg"/>
-	<img src="${andrew}" class="img-circle"/>
+	<img src="${andrew}" class="img-circle img-responsive"/>
 <h3 class="header-font-face">Andrew</h3>
 
 </div>
