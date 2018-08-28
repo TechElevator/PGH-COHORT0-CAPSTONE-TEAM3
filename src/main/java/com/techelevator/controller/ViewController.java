@@ -38,14 +38,7 @@ public class ViewController {
 	
 	@RequestMapping (path="/users/{currentUser}/profile", method=RequestMethod.GET)
 	public String displayProfilePage(HttpServletRequest request, @RequestParam String user_name) {
-		HttpSession session = request.getSession();
-		
-		
-		String userName = request.getParameter("user_name");
-		
-		List<Itinerary> itinerary = itineraryDao.getItinerarysByUser(userName);
-		
-		request.setAttribute("itinerary", itinerary);
+	
 		
 		return "profile";
 	}

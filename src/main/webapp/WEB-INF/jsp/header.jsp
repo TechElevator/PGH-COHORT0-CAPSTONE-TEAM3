@@ -40,7 +40,7 @@
 			<div class="jumbotron">
 			
 			<div id="logo-container">
-			<c:url var="imgSrc" value="/img/Tours'nAt.png"/>
+			<c:url var="imgSrc" value="img/Tours'nAt.png"/>
 			<a href="${homePageHref}"><img src="${imgSrc}" id="logo" /></a>
 			</div>
 			</div>

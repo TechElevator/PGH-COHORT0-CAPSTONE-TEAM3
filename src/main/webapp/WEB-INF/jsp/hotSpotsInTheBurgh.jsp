@@ -168,12 +168,23 @@ function renderMapByType() {
 					success: function(result) {
 						console.log(result);
 						
-					
-						$("#appendDetails").empty();
-				
-						$("#appendDetails").append(result.result.name + '<br>' +result.result.formatted_address + "<br>" + '<img src="img/400x200/' + locations[count][1] + '.jpg"' + ' alt="no alt for img">' + '<a href="' + result.result.website +'">link text</a>' +
-								(result.result.hasOwnProperty("opening_hours") ? result.result.opening_hours.weekday_text : result.result.formatted_phone_number  +"<br>"+' hours not available')
-												)
+						$("#deets-img-container").empty();
+	        				$("#deets-title").empty();
+	        				$("#deets-address").empty();
+	        				$("#deets-website").empty();
+	        				$("#deets-hoursOrPhone").empty();
+	        				
+	        				
+	        				
+	        				
+	        				
+	        				
+	        				$("#deets-img-container").append('<img src="img/400x200/' + locations[count][1] + '.jpg"' + ' alt="no alt for img">');
+	        				$("#deets-title").append(result.result.name);
+	        				$("#deets-address").append(result.result.formatted_address);
+	        				$("#deets-website").append('<a href="' + result.result.website +'">Check out their site to learn more</a>');
+	        				$("#deets-hoursOrPhone").append(result.result.hasOwnProperty("opening_hours") ? result.result.opening_hours.weekday_text : result.result.formatted_phone_number  +"<br>"+' hours not available');
+	        				
 									}          			
 							})
 						});
@@ -250,10 +261,28 @@ function renderMapByType() {
 		        				
 		        					
 		        				var webLink = result.result.website;
-		        				$("#appendDetails").empty();
-							$("#appendDetails").append(result.result.name + '<br>' + result.result.formatted_address + "<br>" + '<a href="' + result.result.website +'">link text</a>' + "<br>" + '<img src="img/400x200/' + locations[count][1] + '.jpg"' + ' alt="no alt for img">' +
-									(result.result.hasOwnProperty("opening_hours") ? result.result.opening_hours.weekday_text : result.result.formatted_phone_number  +"<br>"+' hours not available')
-													)
+		        				$("#deets-img-container").empty();
+		        				$("#deets-title").empty();
+		        				$("#deets-address").empty();
+		        				$("#deets-website").empty();
+		        				$("#deets-hoursOrPhone").empty();
+		        				
+		        				
+		        				
+		        				
+		        				
+		        				
+		        				$("#deets-img-container").append('<img src="img/400x200/' + locations[count][1] + '.jpg"' + ' alt="no alt for img">');
+		        				$("#deets-title").append(result.result.name);
+		        				$("#deets-address").append(result.result.formatted_address);
+		        				$("#deets-website").append('<a href="' + result.result.website +'">Check out their site to learn more</a>');
+		        				
+		        				var hoursOrPhone
+		        				
+		        				$("#deets-hoursOrPhone").append(result.result.hasOwnProperty("opening_hours") ? result.result.opening_hours.weekday_text : result.result.formatted_phone_number  +"<br>"+' hours not available');
+		        				
+		        				
+							
 												}
 											})
 										});
@@ -266,7 +295,7 @@ function renderMapByType() {
 
 
 
-<div style="float: left; width: 400;">
+<div>
 	<form name="frm_map" id="frm_map">
 		<table>
 			<tr>
@@ -289,9 +318,23 @@ function renderMapByType() {
 	</form>
 </div>
 
-<div id="appendDetails">
-</div>
 
+<div id="location-deets-container">
+
+	<div id="deets-img-container"></div>
+	<div id="deets-info-container">
+		
+		<div id="deets-title"></div>
+		<div id="deets-address"></div>
+		<div id="deets-website"></div>
+		<div id="deets-hoursOrPhone"></div>
+		
+		
+		
+		
+	</div>
+
+</div>
 
 
 

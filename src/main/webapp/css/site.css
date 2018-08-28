@@ -212,8 +212,6 @@
 .how-it-works {
 	width: auto;
 	height: auto;
-	float: left;
-	text-align: right;
 }
 
 #profile-sub-navbar {
@@ -242,3 +240,47 @@
 	height: auto;
 	width: auto;
 }
+
+
+#location-deets-container {
+	display: flex;
+	justify-content: right; 
+	width: 100%;
+	height:auto;
+	
+}
+
+#deets-img-container {
+	height: auto;
+	width: auto;
+}
+
+#deets-info-container {
+	height:auto;
+	width:100%;
+}
+
+#deets-title {
+	
+	font-family: Avenir, sans-serif;
+	font-size: 24px;
+}
+
+#deets-address {
+	font-family: Avenir, sans-serif;
+	font-size: 18px;
+}
+
+#deets-website {
+	font-family: Avenir, sans-serif;
+	font-size: 14px;
+}
+
+#deets-hoursOrPhone {
+	width: 50px;
+	font-family: Avenir, sans-serif;
+	font-size: 14px;
+	
+}
+
+
