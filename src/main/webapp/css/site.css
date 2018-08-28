@@ -6,6 +6,11 @@
 	font-family: Avenir, sans-serif;
 }
 
+.navbar-font-face {
+	font-family: Avenir, sans-serif;
+	font-size: 16px;
+}
+
 #map {
 	height: 400px;
 	width: 1000px;
@@ -144,4 +149,22 @@
 	height: auto;
 	float: left;
 	text-align: right;
+}
+
+#profile-sub-navbar {
+	width: auto;
+	height: auto;
+	display: flex;
+	justify-content: center;
+}
+
+.sub-navbar-button {
+	width: auto;
+	height: auto;
+	margin: 0px 10px 0px 10px;
+}
+
+#avatar {
+	height: auto;
+	width: 100px;
 }
