@@ -38,5 +38,25 @@
 		
 </div>
 
+<div id="itinerary-container">
+
+<c:forEach items="${userItin}" var="itineraryByUser">
+<div id="itin-container">
+    
+    <form method="GET" action="profile">
+   
+    <div id="location1">${itineraryByUser.google_id_one}</div>
+    <div id="location2">${itineraryByUser.google_id_two}</div>
+    <div id="location3">${itineraryByUser.google_id_three}</div>
+    <div id="location4">${itineraryByUser.google_id_four}</div>
+    <div id="location5">${itineraryByUser.google_id_five}</div>
+    
+    </form>
+
+</div>
+
+</c:forEach>
+</div>
+
 
 <c:import url="/WEB-INF/jsp/footer.jsp" />

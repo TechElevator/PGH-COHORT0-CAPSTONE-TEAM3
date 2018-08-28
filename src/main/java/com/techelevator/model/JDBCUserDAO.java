@@ -56,7 +56,7 @@ public class JDBCUserDAO implements UserDAO {
 	}
 
 	@Override
-	public Object getUserByUserName(String userName) {
+	public User getUserByUserName(String userName) {
 		String sqlSearchForUsername ="SELECT * "+
 		"FROM app_user "+
 		"WHERE UPPER(user_name) = ? ";
@@ -67,9 +67,38 @@ public class JDBCUserDAO implements UserDAO {
 			thisUser = new User();
 			thisUser.setUserName(user.getString("user_name"));
 			thisUser.setPassword(user.getString("password"));
+			thisUser.setId(user.getInt("id"));
 		}
 
 		return thisUser;
 	}
 
+	private User mapUserToPlaceResults(SqlRowSet results) {
+
+	    User theUserResult = new User();
+	     
+	    theUserResult.setUserName(results.getString("user_name"));
+	    theUserResult.setId(results.getInt("id"));
+	    
+	    return theUserResult;
+	}
+
+	@Override
+	public User getUserIdByUserId(int id) {
+		String sqlSearchForUsername ="SELECT * "+
+				"FROM app_user "+
+				"WHERE id = ? ";
+
+				SqlRowSet user = jdbcTemplate.queryForRowSet(sqlSearchForUsername, id); 
+				User thisUser = null;
+				if(user.next()) {
+					thisUser = new User();
+					thisUser.setUserName(user.getString("user_name"));
+					thisUser.setPassword(user.getString("password"));
+					thisUser.setId(user.getInt("id"));
+				}
+
+				return thisUser;
+	}
+	
 }

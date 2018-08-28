@@ -10,6 +10,11 @@ public class Itinerary {
 	private String google_id_three;
 	private String google_id_four;
 	private String google_id_five;
+	private String name_one;
+	private String name_two;
+	private String name_three;
+	private String name_four;
+	private String name_five;
 	private boolean visible;
 	
 	
@@ -112,6 +117,66 @@ public class Itinerary {
 
 	public void setVisible(boolean visible) {
 		this.visible = visible;
+	}
+
+
+
+	public String getName_one() {
+		return name_one;
+	}
+
+
+
+	public void setName_one(String name_one) {
+		this.name_one = name_one;
+	}
+
+
+
+	public String getName_two() {
+		return name_two;
+	}
+
+
+
+	public void setName_two(String name_two) {
+		this.name_two = name_two;
+	}
+
+
+
+	public String getName_three() {
+		return name_three;
+	}
+
+
+
+	public void setName_three(String name_three) {
+		this.name_three = name_three;
+	}
+
+
+
+	public String getName_four() {
+		return name_four;
+	}
+
+
+
+	public void setName_four(String name_four) {
+		this.name_four = name_four;
+	}
+
+
+
+	public String getName_five() {
+		return name_five;
+	}
+
+
+
+	public void setName_five(String name_five) {
+		this.name_five = name_five;
 	}
 
 }
