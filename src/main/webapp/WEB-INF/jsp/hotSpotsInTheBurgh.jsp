@@ -147,12 +147,11 @@
 				google.maps.event.addListener(marker, 'click', (function(
 						marker, count) {
 					return function() {
-						infowindow.setContent(locations[count][0] + '<br>'
-								+ locations[count][5] + '<br>' + 
-								'<a href="https://maps.googleapis.com/maps/api/place/details/json?placeid='
-										+locations[count][1]+
-										'&fields=name,opening_hours/weekday_text,formatted_address,formatted_phone_number,website&key=AIzaSyCzN_hQI7PADDHGD89Md1kj6DSFFORJmzY"> Get Details  </a>');
-						infowindow.open(map, marker);
+						var placeDetails = 'https://maps.googleapis.com/maps/api/place/details/json?placeid=' + locations[count][1]+'&fields=name,opening_hours/weekday_text,formatted_address,formatted_phone_number,website&key=AIzaSyCzN_hQI7PADDHGD89Md1kj6DSFFORJmzY';
+		
+						infowindow.setContent(locations[count][0] + '<br>'+ locations[count][5] + '<br>' + '<input type="button" onclick="getDetails();" value="Get Details" >');
+					
+	infowindow.open(map, marker);
 					}
 				})(marker, count));
 			}
@@ -207,8 +206,29 @@
 				var placeDetails = 'https://maps.googleapis.com/maps/api/place/details/json?placeid=' + locations[count][1]+'&fields=name,opening_hours/weekday_text,formatted_address,formatted_phone_number,website&key=AIzaSyCzN_hQI7PADDHGD89Md1kj6DSFFORJmzY';
 						infowindow.setContent(locations[count][0] + '<br>'
 								+ locations[count][5] + '<br>' + 
-								'<a href=" ' + placeDetails + '"> Get Details  </a>');
+						'<input type="button" value="Get Details" id="details"/>');	
 						infowindow.open(map, marker);
+						//click button to get details	
+						$("#details").click(function(){
+						    //alert("The paragraph was clicked.");
+							$.ajax({
+		        				url:	 'https://maps.googleapis.com/maps/api/place/details/json?placeid=' + locations[count][1]+'&fields=name,opening_hours/weekday_text,formatted_address,formatted_phone_number,website&key=AIzaSyCzN_hQI7PADDHGD89Md1kj6DSFFORJmzY' , 
+		        				type: 'GET',
+		        				dataType: 'json',
+		        				contentType: 'application/json',
+		        				success: function(result) {
+		        					console.log(result.result.name);
+		        					//var html = '';
+		        					//html += '<div>"'+result.result.name+'"</div>';
+		        					
+		        					//if the object dosent have the info what do we do??????????????
+							$("#appendDetails").append(result.result.name + '<br>' +result.result.formatted_address + "<br>" + result.result.opening_hours.weekday_text);
+		        								}          			
+										})
+									});
+							
+							
+						
 					}
 				})(marker, count));
 			}
@@ -241,7 +261,8 @@
 	</form>
 </div>
 
-
+<div id="appendDetails">
+</div>
 
 
 
