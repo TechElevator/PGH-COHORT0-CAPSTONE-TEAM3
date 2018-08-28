@@ -52,11 +52,10 @@ public class JDBCItineraryDAO implements ItineraryDAO {
 	public List<Itinerary> getItinerarysByUser(String user_name) {
 
 		   LinkedList<Itinerary> itineraryByUser = new LinkedList<>();
-		   String sqlSearchByUsername ="Select i.name_one, i.name_one, i.name_one, i.name_one, i.name_one \n" + 
+		   String sqlSearchByUsername ="Select name_one, name_two, name_three, name_four, name_five \n" + 
 		   		"from itineraries i\n" + 
 		   		"JOIN app_user ap ON ap.id = i.user_id\n" + 
-		   		"where ap.user_name = ?;\n" + 
-		   		"";
+		   		"where ap.user_name = ?";
 		    SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSearchByUsername, user_name);
 		    while (results.next()) {
 		   

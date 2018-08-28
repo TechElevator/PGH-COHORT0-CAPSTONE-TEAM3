@@ -40,6 +40,7 @@ public class ViewController {
 	public String displayProfilePage(HttpServletRequest request, @RequestParam String user_name) {
 		HttpSession session = request.getSession();
 		
+		
 		String userName = request.getParameter("user_name");
 		
 		List<Itinerary> itinerary = itineraryDao.getItinerarysByUser(userName);
