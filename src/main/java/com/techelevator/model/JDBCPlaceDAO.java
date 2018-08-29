@@ -99,4 +99,17 @@ private Place mapPlaceNameToPlaceResults(SqlRowSet results) {
     
     return thePlaceResult;
 }
+
+@Override
+public void voteUpPlace(String google_id) {
+	String sqlStatement = "update up FROM places where google_id = ?;";
+    SqlRowSet results = jdbcTemplate.queryForRowSet(sqlStatement);	
+}
+
+@Override
+public void voteDownPlace(String google_id) {
+	String sqlStatement = "update down FROM places where google_id = ?;";
+    SqlRowSet results = jdbcTemplate.queryForRowSet(sqlStatement);
+	
+}
 }

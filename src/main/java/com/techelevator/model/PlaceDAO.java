@@ -10,4 +10,6 @@ public interface PlaceDAO {
 	public List <Place> getPlacebyType(String type);
 	public List <Place> getPlacebyHours();
 	public List <Place> getPlacebyProximity(double lat, double lng);
+	public void voteUpPlace(String google_id);
+	public void voteDownPlace(String google_id);
 }

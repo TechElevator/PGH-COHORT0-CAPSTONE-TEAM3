@@ -17,23 +17,14 @@
 <div id="profile-sub-navbar">
 
 	<div class="sub-navbar-button">
-	<c:url var="dashboardHref" value="/users/${currentUser.userName}" />
+	<c:url var="dashboardHref" value="/hotspotsBurgh" />
 	<p class="paragraph-font-face"><a href="${dashboardHref}">New Tour</a></p>
 	</div>
 	
-	<div class="sub-navbar-button">
-	<c:url var="newMessageHref" value="/users/${currentUser.userName}/messages/new" />
-	<p class="paragraph-font-face"><a href="${newMessageHref}">Saved Tours</a></p>
-	</div>
 	
 	<div class="sub-navbar-button">
-	<c:url var="sentMessagesHref" value="/users/${currentUser.userName}/messages" />
-	<p class="paragraph-font-face"><a href="${sentMessagesHref}">Suggestions</a></p>
-	</div>
-	
-	<div class="sub-navbar-button">
-	<c:url var="changePasswordHref" value="/users/${currentUser.userName}/changePassword" />
-	<p class="paragraph-font-face"><a href="${changePasswordHref}">Change Password</a></p>
+	<c:url var="changePasswordHref" value="/users/${currentUser.userName}/profile" />
+	<p class="paragraph-font-face"><a href="${dashboardHref}">Change Password</a></p>
 	</div>
 		
 </div>
@@ -69,6 +60,16 @@
 </c:forEach>
 </div>
 
+<form>
+  
+  
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Suggest a Landmark to be added to map:</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+     <br />
+     <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+</form>
 
 <div id="itinerary-container">
 
