@@ -54,6 +54,7 @@ public class ViewController {
 		HttpSession session = request.getSession();
 		
 		 int id = (int) session.getAttribute("id");
+		 session.getAttribute("currentUser");
 		
 		
 		List<Itinerary> Itineraries = ItinDAO.getItinerarysByUser(id);

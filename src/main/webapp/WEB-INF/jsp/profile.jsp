@@ -46,10 +46,21 @@
     <form method="GET" action="profile">
    
     <div id="location1">${itineraryByUser.google_id_one}</div>
+     <div id="location1">${itineraryByUser.name_one}</div>
     <div id="location2">${itineraryByUser.google_id_two}</div>
+    <div id="location2">${itineraryByUser.name_two}</div>
     <div id="location3">${itineraryByUser.google_id_three}</div>
+     <div id="location3">${itineraryByUser.name_three}</div>
     <div id="location4">${itineraryByUser.google_id_four}</div>
+     <div id="location4">${itineraryByUser.name_four}</div>
     <div id="location5">${itineraryByUser.google_id_five}</div>
+    <div id="location5">${itineraryByUser.name_five}</div>
+    
+   
+    
+   
+   
+    
     
     </form>
 

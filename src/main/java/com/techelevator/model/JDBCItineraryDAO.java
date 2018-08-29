@@ -52,19 +52,12 @@ public class JDBCItineraryDAO implements ItineraryDAO {
 	public List<Itinerary> getItinerarysByUser(int id) {
 
 		   LinkedList<Itinerary> itineraryByUser = new LinkedList<>();
-		   String sqlSearchByUsername ="Select * \n" + 
-		   		"from itineraries i\n" + 
-		   		 
-		   		"where user_id = ?";
+		   String sqlSearchByUsername ="Select * from itineraries where user_id = ?";
 		    SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSearchByUsername, id);
 		    while (results.next()) {
-		   
-		    	itineraryByUser.add(mapRowToItinerary(results));
+		    		itineraryByUser.add(mapRowToItinerary(results));
+		    }
 
-		    }
-		    for(int i= 0; i < itineraryByUser.size(); i++) {
-		   
-		    }
 		    return itineraryByUser;
 		}
 	
@@ -93,6 +86,7 @@ public class JDBCItineraryDAO implements ItineraryDAO {
 
 		Itinerary theItinerary = new Itinerary();
 		
+		theItinerary.setItinerary_id(results.getInt("itinerary_id"));
 		theItinerary.setUser_id(results.getInt("user_id"));
 		theItinerary.setGoogle_id_one(results.getString("google_id_one"));
 		theItinerary.setGoogle_id_two(results.getString("google_id_two"));
@@ -100,6 +94,11 @@ public class JDBCItineraryDAO implements ItineraryDAO {
 		theItinerary.setGoogle_id_four(results.getString("google_id_four"));
 		theItinerary.setGoogle_id_five(results.getString("google_id_five"));
 		theItinerary.setVisible(results.getBoolean("visible"));
+		theItinerary.setName_one(results.getString("name_one"));
+		theItinerary.setName_two(results.getString("name_two"));
+		theItinerary.setName_three(results.getString("name_three"));
+		theItinerary.setName_four(results.getString("name_four"));
+		theItinerary.setName_five(results.getString("name_five"));
 
 		return theItinerary;
 	}
