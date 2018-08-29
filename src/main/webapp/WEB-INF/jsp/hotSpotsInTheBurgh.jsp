@@ -12,40 +12,45 @@
 
 
 
-	<div class="small-box">
-		<h1 class="h1-center header-font-face">Hotspots In The Burgh</h1>
-		
-	</div>
-	
-	<div id="how-it-works-container">
-		
-		<div class="p-center">
+<div class="small-box">
+	<h1 class="h1-center header-font-face">Hotspots In The Burgh</h1>
+
+</div>
+
+<div id="how-it-works-container">
+
+	<div class="p-center">
 		<h3 class="header-font-face">How It Works</h3>
-		</div>
-		
-		<div class="how-it-works">
-		<p class="paragraph-font-face p-center">We have an amazing list of partnered comapnies that we have marked on the map for you to choose from. If you would like to filter what type
-		of spot you are looking for, use the buttons below the map and it will reload the map with the spots that you have selected. To view more 
-		information about a specific spot click on the marker and then click "Get Details". When you are sure you would like to visit that spot, click
-		the "Add Spot" and you will then see your itinerary, above the map, get one slot filled with your selected spot. Have fun creating your personalized
-		custom city tour.</p>
-		</div>
 	</div>
+
+	<div class="how-it-works">
+		<p class="paragraph-font-face p-center">We have an amazing list of
+			partnered comapnies that we have marked on the map for you to choose
+			from. If you would like to filter what type of spot you are looking
+			for, use the buttons below the map and it will reload the map with
+			the spots that you have selected. To view more information about a
+			specific spot click on the marker and then click "Get Details". When
+			you are sure you would like to visit that spot, click the "Add Spot"
+			and you will then see your itinerary, above the map, get one slot
+			filled with your selected spot. Have fun creating your personalized
+			custom city tour.</p>
+	</div>
+</div>
 
 
 <div id="itin-container">
 
-<div id="location1"></div>
-<div id="location2"></div>
-<div id="location3"></div>
-<div id="location4"></div>
-<div id="location5"></div>
+	<div id="location1"></div>
+	<div id="location2"></div>
+	<div id="location3"></div>
+	<div id="location4"></div>
+	<div id="location5"></div>
 
 </div>
 
 <div id="map-container">
 
-<div id="map" ></div>
+	<div id="map"></div>
 
 </div>
 
@@ -74,7 +79,7 @@
 						var html = '';
 						$.each(types,function(index, value) {
 											var name = value.replace(/_/g, " ");
-											html += '<div><label><input type="radio" name ="type" class="types" value="'+ value +'" />'
+											html += '<div><label><input type="radio" name="type" class="types" value="'+ value +'" />'
 													+ capitalizeFirstLetter(name)
 													+ '</label></div>';
 						});
@@ -257,8 +262,7 @@ function renderMapByType() {
 		        				dataType: 'json',
 		        				contentType: 'application/json',
 		        				success: function(result) {
-		        					console.log(result);
-		        				
+		        				console.log(result);
 		        					
 		        				var webLink = result.result.website;
 		        				$("#deets-img-container").empty();
@@ -266,7 +270,7 @@ function renderMapByType() {
 		        				$("#deets-address").empty();
 		        				$("#deets-website").empty();
 		        				$("#deets-hoursOrPhone").empty();
-		        				
+		        				$("#add-button").empty();
 		        				
 		        				
 		        				
@@ -277,10 +281,44 @@ function renderMapByType() {
 		        				$("#deets-address").append(result.result.formatted_address);
 		        				$("#deets-website").append('<a href="' + result.result.website +'">Check out their site to learn more</a>');
 		        				
-		        				var hoursOrPhone
-		        				
 		        				$("#deets-hoursOrPhone").append(result.result.hasOwnProperty("opening_hours") ? result.result.opening_hours.weekday_text : result.result.formatted_phone_number  +"<br>"+' hours not available');
 		        				
+		        				$("#add-button").append('<input type="image" src="img/add-button.png" name="add-button">');
+		        				
+		        				
+		        				
+		        				$("#add-button").one('click', function(){
+		        					
+		        					
+
+		        					if ( $('#location1').is(':empty')) {
+		        						$("#location1").html('<img src="img/400x200/' + locations[count][1] + 
+		        								'.jpg"' + 'alt="no alt for img" height="100px" width="200px">');
+		        					}
+		        
+		        					else if ( $('#location2').is(':empty')) {
+		        						$('#location2').html('<img src="img/400x200/' + locations[count][1] + 
+		        								'.jpg"' + ' alt="no alt for img" height="100px" width="200px">');
+		        					}
+		        					
+		        					else if ( $('#location3').is(':empty')) {
+		        						$('#location3').html('<img src="img/400x200/' + locations[count][1] + 
+		        								'.jpg"' + ' alt="no alt for img" height="100px" width="200px">');
+		        					}
+		        					
+		        					else if ( $('#location4').is(':empty')) {
+		        						$('#location4').html('<img src="img/400x200/' + locations[count][1] + 
+		        								'.jpg"' + ' alt="no alt for img" height="100px" width="200px">');
+		        					}
+		        					
+		        					else if ( $('#location5').is(':empty')) {
+		        						$('#location5').html('<img src="img/400x200/' + locations[count][1] + 
+		        								'.jpg"' + ' alt="no alt for img" height="100px" width="200px">');
+		        					}
+		        					
+		        			
+		        					
+		        				});
 		        				
 							
 												}
@@ -295,26 +333,15 @@ function renderMapByType() {
 
 
 
-<div>
+<div id="types-filter-container">
 	<form name="frm_map" id="frm_map">
-		<table>
-			<tr>
-				<td></td>
-				<td><input type="button" value="Show" id="submit"
-					onclick="renderMapByType();"> 
-					<input type="button" value="Show All" id ="submit"
-					onclick="initMap();" >
-				</td>
-			</tr>
-			<tr>
-				<th>Types</th>
-				<td>
-					<div id="type_holder" style="height: auto;">
-						<!-- Dynamic Content -->
-					</div>
-				</td>
-			</tr>
-		</table>
+		
+		<div id="type_holder" style="width: 500px;">
+			<p>Types</p>
+		</div>
+		
+		<input type="button" value="Show" id="submit" onclick="renderMapByType();"> <input type="button" 
+			value="Show All" id="submit" onclick="initMap();">		
 	</form>
 </div>
 
@@ -323,15 +350,16 @@ function renderMapByType() {
 
 	<div id="deets-img-container"></div>
 	<div id="deets-info-container">
-		
+
 		<div id="deets-title"></div>
 		<div id="deets-address"></div>
 		<div id="deets-website"></div>
 		<div id="deets-hoursOrPhone"></div>
-		
-		
-		
-		
+
+		<div id="add-button"></div>
+		<div id="delete-button"></div>
+
+
 	</div>
 
 </div>

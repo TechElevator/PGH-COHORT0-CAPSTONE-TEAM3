@@ -186,29 +186,29 @@
 }
 
 #location1 {
-	height:100px;
+	height:auto;
 	width: 200px;
-	background-color: red;
+	align-text:center;
 }
 #location2 {
-	height:100px;
+	height:auto;
 	width: 200px;
-	background-color: orange;
+	align-text:center;
 }
 #location3 {
-	height:100px;
+	height:auto;
 	width: 200px;
-	background-color: yellow;
+	align-text:center;
 }
 #location4 {
-	height:100px;
+	height:auto;
 	width: 200px;
-	background-color: green;
+	align-text:center;
 }
 #location5 {
-	height:100px;
+	height:auto;
 	width: 200px;
-	background-color: blue;
+	align-text:center;
 }
 
 #how-it-works-container {
@@ -241,6 +241,14 @@
 	width: 100px;
 }
 
+.profile-itinerary {
+height:auto;
+width: 400px;
+font-size: 14px;
+color: white;
+
+}
+
 
 #itinerary-container {
 	
@@ -251,9 +259,16 @@
 }
 
 
+#types-filter-container {
+	
+	display: flex;
+	justify-content: center;
+	
+}
+
 #location-deets-container {
 	display: flex;
-	justify-content: right; 
+	justify-content: center; 
 	width: 100%;
 	height:auto;
 	
@@ -286,10 +301,24 @@
 }
 
 #deets-hoursOrPhone {
-	width: 50px;
+	width: 222px;
 	font-family: Avenir, sans-serif;
 	font-size: 14px;
 	
 }
+
+#add-button {
+	height: 50px;
+	width: auto;
+	
+}
+
+#type_holder {
+	float: left;
+	background-color: orange;
+	display: flex;
+	justify-content: center;
+}
+
 
 
