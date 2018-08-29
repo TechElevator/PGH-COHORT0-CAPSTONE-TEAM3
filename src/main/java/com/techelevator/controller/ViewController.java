@@ -48,41 +48,25 @@ public class ViewController {
 	
 	
 	
-	@RequestMapping (path="/users/{currentUser}/profile", method=RequestMethod.GET)
+	@RequestMapping (path="/users/{currentUser.userName}/profile", method=RequestMethod.GET)
 
 	public String displayProfilePage(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		
-		 int id = (int) session.getAttribute("id");
-		//String currentUser = (String) session.getAttribute("currentUser");
+		int id = (int) session.getAttribute("id");
+		session.getAttribute("currentUser");
+		session.getServletContext();
+		session.toString();
+		session.getAttributeNames();
 		
 		
 		List<Itinerary> Itineraries = ItinDAO.getItinerarysByUser(id);
 		
 		 session.setAttribute("userItin", Itineraries);
-		
-		 System.out.println("size" + Itineraries.size());
-		 
-		 System.out.println("I-id" +Itineraries.get(0).getItinerary_id());
-		 System.out.println("user id"+Itineraries.get(0).getUser_id());
-		
-		 System.out.println("gID" +Itineraries.get(0).getGoogle_id_one());
-		 System.out.println(Itineraries.get(0).getGoogle_id_two());
-		 System.out.println(Itineraries.get(0).getGoogle_id_three());
-		 System.out.println(Itineraries.get(0).getGoogle_id_four());
-		 System.out.println(Itineraries.get(0).getGoogle_id_five());
-		
-		 System.out.println("I ID"+Itineraries.get(0).getName_one());
-		 System.out.println(Itineraries.get(0).getName_two());
-		 System.out.println(Itineraries.get(0).getName_three());
-		 System.out.println(Itineraries.get(0).getName_four());
-		 System.out.println(Itineraries.get(0).getName_five());
-	
-		 
-	
-	
 
+		 System.out.println(session.getAttribute("currentUser.userName"));
 		
+
 		return "profile";
 	}
 	

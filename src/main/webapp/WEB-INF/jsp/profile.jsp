@@ -17,22 +17,22 @@
 <div id="profile-sub-navbar">
 
 	<div class="sub-navbar-button">
-	<c:url var="dashboardHref" value="/users/${currentUser}" />
+	<c:url var="dashboardHref" value="/users/${currentUser.userName}" />
 	<p class="paragraph-font-face"><a href="${dashboardHref}">New Tour</a></p>
 	</div>
 	
 	<div class="sub-navbar-button">
-	<c:url var="newMessageHref" value="/users/${currentUser}/messages/new" />
+	<c:url var="newMessageHref" value="/users/${currentUser.userName}/messages/new" />
 	<p class="paragraph-font-face"><a href="${newMessageHref}">Saved Tours</a></p>
 	</div>
 	
 	<div class="sub-navbar-button">
-	<c:url var="sentMessagesHref" value="/users/${currentUser}/messages" />
+	<c:url var="sentMessagesHref" value="/users/${currentUser.userName}/messages" />
 	<p class="paragraph-font-face"><a href="${sentMessagesHref}">Suggestions</a></p>
 	</div>
 	
 	<div class="sub-navbar-button">
-	<c:url var="changePasswordHref" value="/users/${currentUser}/changePassword" />
+	<c:url var="changePasswordHref" value="/users/${currentUser.userName}/changePassword" />
 	<p class="paragraph-font-face"><a href="${changePasswordHref}">Change Password</a></p>
 	</div>
 		

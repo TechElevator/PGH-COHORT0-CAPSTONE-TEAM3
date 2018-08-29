@@ -40,7 +40,7 @@
 			<div class="jumbotron">
 			
 			<div id="logo-container">
-			<c:url var="imgSrc" value="img/Tours'nAt.png"/>
+			<c:url var="imgSrc" value="/img/Tours'nAt.png"/>
 			<a href="${homePageHref}"><img src="${imgSrc}" id="logo" /></a>
 			</div>
 			</div>
@@ -70,7 +70,7 @@
 							<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
 							</form>
 							<c:if test="${not empty currentUser}">
-							<c:url var="profileHref" value="/users/${currentUser}/profile"/>
+							<c:url var="profileHref" value="/users/${currentUser.userName}/profile"/>
 						<li class="navbar-font-face"><a href="${profileHref }" id="currentUser">${currentUser.userName}</a></li>
 						</c:if>	
 							<li class="navbar-font-face"><a id="logoutLink" href="#">Log Out</a></li>
