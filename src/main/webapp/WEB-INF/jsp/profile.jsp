@@ -45,15 +45,15 @@
     
     <form method="GET" action="profile">
     
-    <div class="profile-itinerary" style="background: url(../../img/400x200/${itineraryByUser.google_id_one}.jpg); width:400px; height:200px; ">${itineraryByUser.name_one}</div>
+    <div class="profile-itinerary navbar-font-face" style="background: url(../../img/400x200/${itineraryByUser.google_id_one}.jpg); width:400px; height:200px; ">${itineraryByUser.name_one}</div>
      
-    <div class="profile-itinerary" style="background: url(../../img/400x200/${itineraryByUser.google_id_two}.jpg); width:400px; height:200px; ">${itineraryByUser.name_two}</div>
+    <div class="profile-itinerary navbar-font-face" style="background: url(../../img/400x200/${itineraryByUser.google_id_two}.jpg); width:400px; height:200px; ">${itineraryByUser.name_two}</div>
     
-    <div class="profile-itinerary" style="background: url(../../img/400x200/${itineraryByUser.google_id_three}.jpg);  width:400px; height:200px;">${itineraryByUser.name_three}</div>
+    <div class="profile-itinerary navbar-font-face" style="background: url(../../img/400x200/${itineraryByUser.google_id_three}.jpg);  width:400px; height:200px;">${itineraryByUser.name_three}</div>
      
-    <div class="profile-itinerary" style="background: url(../../img/400x200/${itineraryByUser.google_id_four}.jpg); width:400px; height:200px; ">${itineraryByUser.name_four}</div>
+    <div class="profile-itinerary navbar-font-face" style="background: url(../../img/400x200/${itineraryByUser.google_id_four}.jpg); width:400px; height:200px; ">${itineraryByUser.name_four}</div>
      
-    <div class="profile-itinerary" style="background: url(../../img/400x200/${itineraryByUser.google_id_five}.jpg); width:400px; height:200px; ">${itineraryByUser.name_five}</div>
+    <div class="profile-itinerary navbar-font-face" style="background: url(../../img/400x200/${itineraryByUser.google_id_five}.jpg); width:400px; height:200px; ">${itineraryByUser.name_five}</div>
    
     
    
