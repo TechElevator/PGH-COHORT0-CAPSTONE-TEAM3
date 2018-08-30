@@ -83,11 +83,17 @@
 						var html = '';
 						$.each(types,function(index, value) {
 											var name = value.replace(/_/g, " ");
-											html += '<div><label><input type="radio" name="type" class="types" value="'+ value +'" />'
-													+ capitalizeFirstLetter(name)
-													+ '</label></div>';
+											html += '<div class="radio-button-container"><input type="radio"  name="type" class="types" value="'+ value +'"/>'
+													+ '<p class="p-radio-button-text">'  + capitalizeFirstLetter(name) + '</p>'
+													+ '</div>';
 						});
-						$('#type_holder').html(html);
+						
+						var container = $('#type_holder');
+						
+						container.html(html);
+						
+						container.find('input').on('change', renderMapByType);
+						
 					});
 	//*****************************************************************
 	
@@ -168,7 +174,7 @@ function renderMapByType() {
 			infowindow.open(map, marker);
 			
 			//get the details when clicked
-			$("#details").click(function(){
+			$("#details").one('click', function(){
 				$.ajax({
 					url:	 'https://maps.googleapis.com/maps/api/place/details/json?placeid=' + locations[count][1]+'&fields=name,opening_hours/weekday_text,formatted_address,formatted_phone_number,website&key=AIzaSyB2EShyhB3vFvhOeMjexOBUgtF0-iZtvWo', 
 					type: 'GET',
@@ -300,6 +306,9 @@ function renderMapByType() {
 				google.maps.event.addListener(marker, 'click', (function(
 						marker, count) {
 					return function() {
+
+					    $("#details").empty();
+						
 						infowindow.setContent(locations[count][0] + '<br>'
 								+ locations[count][5] + '<br>' + 
 						'<input type="button" value="Get Details" id="details"/>');	
@@ -307,8 +316,9 @@ function renderMapByType() {
 						//click button to get details
 						
 						
-						$("#details").click(function(){
+						$("#details").one('click', function(){
 						    //alert("The paragraph was clicked.");
+						    
 							$.ajax({
 		        				url:	 'https://maps.googleapis.com/maps/api/place/details/json?placeid=' + locations[count][1]+'&fields=name,opening_hours/weekday_text,formatted_address,formatted_phone_number,website&key=AIzaSyB2EShyhB3vFvhOeMjexOBUgtF0-iZtvWo' , 
 		        				type: 'GET',
@@ -328,14 +338,14 @@ function renderMapByType() {
 		        				
 		        				
 		        				
-		        				$("#deets-img-container").append('<img src="img/400x200/' + locations[count][1] + '.jpg"' + ' alt="no alt for img">');
-		        				$("#deets-title").append(result.result.name);
-		        				$("#deets-address").append(result.result.formatted_address);
-		        				$("#deets-website").append('<a href="' + result.result.website +'">Check out their site to learn more</a>');
+		        				$("#deets-img-container").html('<img src="img/400x200/' + locations[count][1] + '.jpg"' + ' alt="no alt for img">');
+		        				$("#deets-title").html(result.result.name);
+		        				$("#deets-address").html(result.result.formatted_address);
+		        				$("#deets-website").html('<a href="' + result.result.website +'">Check out their site to learn more</a>');
 		        				
-		        				$("#deets-hoursOrPhone").append(result.result.hasOwnProperty("opening_hours") ? result.result.opening_hours.weekday_text : result.result.formatted_phone_number  +"<br>"+' hours not available');
+		        				$("#deets-hoursOrPhone").html(result.result.hasOwnProperty("opening_hours") ? result.result.opening_hours.weekday_text : result.result.formatted_phone_number  +"<br>"+' hours not available');
 		        				
-		        				$("#add-button").append('<input type="image" src="img/add-button.png" name="add-button">');
+		        				$("#add-button").html('<input type="image" src="img/add-button.png" name="add-button">');
 		        				
 		        				
 		        				
@@ -476,13 +486,20 @@ function renderMapByType() {
 <div id="types-filter-container">
 	<form name="frm_map" id="frm_map">
 		
-		<div id="type_holder" style="width: 500px;">
+		<div id="type_holder" >
 			<p>Types</p>
 		</div>
 		
-		<input type="button" value="Show" id="submit" onclick="renderMapByType();"> <input type="button" 
-			value="Show All" id="submit" onclick="initMap();">
-			<input type="button" value="route" id="submit" onclick="routeMap();">		
+		<div id="submit-buttons-container">
+		<div class="submit-button">
+		<input type="button" value="Search All Spots" id="submit" onclick="initMap();">
+		</div>
+		<div class="submit-button">
+		<input type="button" value="Get Route" id="submit" onclick="routeMap();">
+		</div>		
+		</div>
+		
+		
 	</form>
 </div>
 
