@@ -68,9 +68,14 @@
 		<div id="submit-buttons-container">
 		<div class="submit-button">
 		<input type="button" value="Search All Spots" id="submit" onclick="initMap();">
+		
 		</div>
-		<div class="submit-button" id="getRoute">
+		<div class="submit-button" id="saveRoute">
 		</div>		
+		
+		<div class="submit-button" id="getRoute">
+		</div>
+			
 		</div>
 		
 		
@@ -139,6 +144,9 @@
 						
 					});
 	//*****************************************************************
+	
+	
+	
 	
 	
 	
@@ -287,6 +295,7 @@ function renderMapByType() {
 	        								'.jpg"' + ' alt="no alt for img" height="100px" width="200px">');
 	        						
 	        						$("#getRoute").html('<input type="button" value="Get Route" id="submit" onclick="routeMap();">');
+	        						$("#saveRoute").html('<input type="button" value="Save Route" id="submit" onclick="routeMap();">');
 	        					}
 	        					
 		        				}
@@ -382,6 +391,10 @@ function renderMapByType() {
                                             console.log(result);
                                                 
                                             var webLink = result.result.website;
+                                            
+                                            
+                                            
+                                            
                                             $("#deets-img-container").empty();
                                             $("#deets-title").empty();
                                             $("#deets-address").empty();
@@ -433,6 +446,7 @@ function renderMapByType() {
 					        								'.jpg"' + ' alt="no alt for img" height="100px" width="200px">');
 					        						
 					        						$("#getRoute").html('<input type="button" value="Get Route" id="submit" onclick="routeMap();">');
+					        						$("#saveRoute").html('<input type="button" value="Save Route" id="submit" onclick="routeMap();">');
 					        					}
 						        				}
                                             });

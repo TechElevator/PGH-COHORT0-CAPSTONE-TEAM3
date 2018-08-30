@@ -375,6 +375,7 @@ input[type=button]{
 	float: left;
 	display: flex;
 	justify-content: center;
+	background-color: green;
 }
 
 .p-radio-button-text {
@@ -385,6 +386,7 @@ input[type=button]{
 	width: 100%;
 	float: left;
 	display: flex;
+	margin-top: 10px;
 	justify-content: space-between;
 }
 
