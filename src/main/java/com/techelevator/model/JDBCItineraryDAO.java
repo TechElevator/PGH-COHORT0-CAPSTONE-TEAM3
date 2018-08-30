@@ -29,17 +29,30 @@ public class JDBCItineraryDAO implements ItineraryDAO {
 	
 	
 	@Override
-	public void addItinerary(Itinerary NewItinerary) {
-			String sqlInsertNewItinerary = "INSERT INTO itineraries(itinerary_id,user_id,google_id_one,google_id_two,google_id_three,google_id_four,google_id_five,visible,name_one,name_two,name_three,name_four,name_five) "
-					+ "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?) RETURNING itinerary_id;";
+	public void addItinerary(int id) {
+			String sqlInsertNewItinerary = "INSERT INTO itineraries(itinerary_id,user_id,google_id_one,name_one,google_id_two,name_two,google_id_three,name_three,google_id_four,name_four,google_id_five,name_five,visible) "
+					+ "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,true) RETURNING itinerary_id;";
 		
-			int id = jdbcTemplate.queryForObject(sqlInsertNewItinerary, Integer.class, NewItinerary.getUser_id(),
+			Itinerary NewItinerary = new Itinerary();
+			NewItinerary.setItinerary_id(getNextItineraryId());
+			jdbcTemplate.update(sqlInsertNewItinerary, NewItinerary.getUser_id(),
 					NewItinerary.getGoogle_id_one(), NewItinerary.getGoogle_id_two(), NewItinerary.getGoogle_id_three(), NewItinerary.getGoogle_id_four(),
 					NewItinerary.getGoogle_id_five(), NewItinerary.isVisible(), NewItinerary.getName_one(),
 					NewItinerary.getName_two(), NewItinerary.getName_three(), NewItinerary.getName_four() ,NewItinerary.getName_five());
-			NewItinerary.setItinerary_id(id);
-		
+			NewItinerary.setItinerary_id(id);	
 	}
+	
+	private int getNextItineraryId() {
+		SqlRowSet nextIdResult = jdbcTemplate.queryForRowSet("Select nextval(pg_get_serial_sequence('itineraries', 'itinerary_id'));");
+		if (nextIdResult.next()) {
+			return nextIdResult.getInt(1);
+		} else {
+			throw new RuntimeException("Something went wrong while getting an id for the new campsite");
+		}
+	}
+	
+	
+	
 
 	@Override
 	public void deleteItinerary(int itinerary_id) {
