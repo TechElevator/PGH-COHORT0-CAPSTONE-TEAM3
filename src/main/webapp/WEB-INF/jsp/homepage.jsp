@@ -21,31 +21,40 @@ $('.carousel').carousel({
             <div class="item active">
                 <div class="fill" style="background-image:url('img/category-img/stadium.jpg');"></div>
                 <div class="carousel-caption">
-                    <h2></h2>
+                    <h2 class="h1-center header-font-face">Sporting Events</h2>
+                    <p class="navbar-font-face">Join the masses with the fans of the best sport teams across the country.</p>
                 </div>
             </div>
             <div class="item">
                 <div class="fill" style="background-image:url('img/category-img/park.jpg');"></div>
                 <div class="carousel-caption">
-                    <h2></h2>
+                    <h2 class="h1-center header-font-face">Parks</h2>
+                    <p class="navbar-font-face">Take a siesta or have a picnic in some of the most beautiful parks around the Pittsburgh area.</p>
+                
                 </div>
             </div>
             <div class="item">
                 <div class="fill" style="background-image:url('img/category-img/museum.jpg');"></div>
                 <div class="carousel-caption">
-                    <h2></h2>
+                    <h2 class="h1-center header-font-face">Museums</h2>
+                    <p class="navbar-font-face">Like art? Like history? Like birds? Like science? Don't worry we got you covered!<br>
+                    We're bringing you everything about history and the world through our local museums	.</p>
                 </div>
             </div>
             <div class="item">
                 <div class="fill" style="background-image:url('img/category-img/bar.jpg');"></div>
                 <div class="carousel-caption">
-                    <h2></h2>
+                    <h2 class="h1-center header-font-face">Bars</h2>
+                    <p class="navbar-font-face">Time to unwind, hangout with some friends and play a little pool or maybe darts. Check out some of the local bars that Pittsburgh has to offer. </p>
+                
                 </div>
             </div>
             <div class="item">
                 <div class="fill" style="background-image:url('img/category-img/nightlife.jpg');"></div>
                 <div class="carousel-caption">
-                    <h2></h2>
+                    <h2 class="h1-center header-font-face">Night Clubs</h2>
+                    <p class="navbar-font-face">Local bars not wild enough for you? Are you tired of long walks in the park? Sick of babysitting all day? Need some time to yourself or for you significant other?
+                    well make sure you schedule a stop at one of the best night clubs in Pittsburgh. From erotic clubs to dance clubs we can supply your needs.</p>
                 </div>
             </div>
         </div>
