@@ -70,7 +70,6 @@
 		<input type="button" value="Search All Spots" id="submit" onclick="initMap();">
 		</div>
 		<div class="submit-button" id="getRoute">
-		
 		</div>		
 		</div>
 		
@@ -372,6 +371,7 @@ function renderMapByType() {
 					    	$("#details").one('click', function(){
 						    //alert("The paragraph was clicked.");
       
+                                 
                                 
                                         $.ajax({
                                             url:	 'https://maps.googleapis.com/maps/api/place/details/json?placeid=' + locations[count][1]+'&fields=name,opening_hours/weekday_text,formatted_address,formatted_phone_number,website&key=AIzaSyB2EShyhB3vFvhOeMjexOBUgtF0-iZtvWo' , 
@@ -436,12 +436,11 @@ function renderMapByType() {
 					        					}
 						        				}
                                             });
-                                   
                                     }
 					        			
 					        					
 					        				});
-		        				}
+		        				
 											})
 					}
 					
