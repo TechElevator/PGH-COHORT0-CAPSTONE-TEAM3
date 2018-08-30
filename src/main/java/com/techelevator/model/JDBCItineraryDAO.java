@@ -30,8 +30,8 @@ public class JDBCItineraryDAO implements ItineraryDAO {
 	
 	@Override
 	public void addItinerary(int id) {
-			String sqlInsertNewItinerary = "INSERT INTO itineraries(itinerary_id,user_id,google_id_one,google_id_two,google_id_three,google_id_four,google_id_five,visible,name_one,name_two,name_three,name_four,name_five) "
-					+ "VALUES (?,?,?,?,?,?,?,true,?,?,?,?,?) RETURNING itinerary_id;";
+			String sqlInsertNewItinerary = "INSERT INTO itineraries(itinerary_id,user_id,google_id_one,name_one,google_id_two,name_two,google_id_three,name_three,google_id_four,name_four,google_id_five,name_five,visible) "
+					+ "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,true) RETURNING itinerary_id;";
 		
 			Itinerary NewItinerary = new Itinerary();
 			NewItinerary.setItinerary_id(getNextItineraryId());
