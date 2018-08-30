@@ -69,8 +69,7 @@
 		<div class="submit-button">
 		<input type="button" value="Search All Spots" id="submit" onclick="initMap();">
 		</div>
-		<div class="submit-button">
-		<input type="button" value="Get Route" id="submit" onclick="routeMap();">
+		<div class="submit-button" id="getRoute">
 		</div>		
 		</div>
 		
@@ -286,6 +285,8 @@ function renderMapByType() {
 	        					else if ( $('#location5').is(':empty')) {
 	        						$('#location5').html('<img src="img/400x200/' + locations[count][1] + 
 	        								'.jpg"' + ' alt="no alt for img" height="100px" width="200px">');
+	        						
+	        						$("#getRoute").html('<input type="button" value="Get Route" id="submit" onclick="routeMap();">');
 	        					}
 	        					
 		        				}
@@ -370,9 +371,7 @@ function renderMapByType() {
 					    	$("#details").one('click', function(){
 						    //alert("The paragraph was clicked.");
       
-                                    if (currentDetail != marker){
-                                        
-                                        currentDetail=marker;
+                                 
                                 
                                         $.ajax({
                                             url:	 'https://maps.googleapis.com/maps/api/place/details/json?placeid=' + locations[count][1]+'&fields=name,opening_hours/weekday_text,formatted_address,formatted_phone_number,website&key=AIzaSyB2EShyhB3vFvhOeMjexOBUgtF0-iZtvWo' , 
@@ -432,15 +431,16 @@ function renderMapByType() {
 					        					else if ( $('#location5').is(':empty')) {
 					        						$('#location5').html('<img src="img/400x200/' + locations[count][1] + 
 					        								'.jpg"' + ' alt="no alt for img" height="100px" width="200px">');
+					        						
+					        						$("#getRoute").html('<input type="button" value="Get Route" id="submit" onclick="routeMap();">');
 					        					}
 						        				}
                                             });
-                                         currentDetail=null;
                                     }
 					        			
 					        					
 					        				});
-		        				}
+		        				
 											})
 					}
 					
