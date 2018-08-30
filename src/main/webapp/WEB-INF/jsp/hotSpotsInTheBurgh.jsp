@@ -365,10 +365,10 @@ function renderMapByType() {
 				waypoints.push(String(arrayOfPlaceIdForRoute[i]));
 				//console.log(waypoints);
 			}
-			else {
-				endPoint = arrayOfPlaceIdForRoute[i].toString();
+			else {		
+				endPoint = (arrayOfPlaceIdForRoute[arrayOfPlaceIdForRoute.length-1]).toString();
 					console.log(endPoint);
-					startPoint = (arrayOfPlaceIdForRoute[arrayOfPlaceIdForRoute.length-1]).toString();	
+					startPoint = arrayOfPlaceIdForRoute[0].toString();
 					console.log(startPoint);
 
 			}
