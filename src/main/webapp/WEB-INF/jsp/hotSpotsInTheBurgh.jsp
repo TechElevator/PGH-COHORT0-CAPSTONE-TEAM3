@@ -182,7 +182,7 @@ function renderMapByType() {
 	        				$("#deets-address").empty();
 	        				$("#deets-website").empty();
 	        				$("#deets-hoursOrPhone").empty();
-	        				
+	        				$("#add-button").empty();
 	        			
 	        				
 	        				$("#deets-img-container").append('<img src="img/400x200/' + locations[count][1] + '.jpg"' + ' alt="no alt for img">');
