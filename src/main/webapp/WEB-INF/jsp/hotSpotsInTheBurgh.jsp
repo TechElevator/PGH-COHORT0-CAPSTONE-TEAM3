@@ -59,7 +59,7 @@
 
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script async defer
-	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDb78dI6bMnP859k201BGwYlbxS-9iuUDY&callback=initMap">
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2EShyhB3vFvhOeMjexOBUgtF0-iZtvWo&callback=initMap">
 	
 </script>
 
@@ -67,7 +67,7 @@
 	//get the type marker info
 	//of the markers dont have info create function for this
 	
-	
+
 	$ = jQuery;
 	$(document)
 			.ready(
@@ -166,18 +166,22 @@ function renderMapByType() {
 			//get the details when clicked
 			$("#details").click(function(){
 				$.ajax({
-					url:	 'https://maps.googleapis.com/maps/api/place/details/json?placeid=' + locations[count][1]+'&fields=name,opening_hours/weekday_text,formatted_address,formatted_phone_number,website&key=AIzaSyCzN_hQI7PADDHGD89Md1kj6DSFFORJmzY', 
+					url:	 'https://maps.googleapis.com/maps/api/place/details/json?placeid=' + locations[count][1]+'&fields=name,opening_hours/weekday_text,formatted_address,formatted_phone_number,website&key=AIzaSyB2EShyhB3vFvhOeMjexOBUgtF0-iZtvWo', 
 					type: 'GET',
 					dataType: 'json',
 					contentType: 'application/json',
 					success: function(result) {
-						console.log(result);
+						//console.log(result);
 						
 						$("#deets-img-container").empty();
 	        				$("#deets-title").empty();
 	        				$("#deets-address").empty();
 	        				$("#deets-website").empty();
 	        				$("#deets-hoursOrPhone").empty();
+	        				
+	        				
+	        				//origin watpoint destination
+	        				
 	        				
 	        				
 	        				
@@ -202,8 +206,11 @@ function renderMapByType() {
 	
 	
 	
+		var arrayOfPlaceIdForRoute = [];
 //***********************************************************************	
 	function initMap() {
+		
+		
 		var center = {
 			lat : 40.442169,
 			lng : -79.994957
@@ -226,8 +233,10 @@ function renderMapByType() {
 				}
 			}
 		})
-		//this function creates the marker
-		// we need to get this info from the datbase
+		
+		
+		
+		
 		function createMarker(place, icon) {
 			var map = new google.maps.Map(document.getElementById('map'), {
 				zoom : 13,
@@ -242,27 +251,29 @@ function renderMapByType() {
 							locations[count][4]),
 					map : map,
 					title : locations[count][0],
-					animation : google.maps.Animation.DROP
+					animation : google.maps.Animation.BOUNCE
 				});
+				
 				
 				google.maps.event.addListener(marker, 'click', (function(
 						marker, count) {
 					return function() {
-				var placeDetails = 'https://maps.googleapis.com/maps/api/place/details/json?placeid=' + locations[count][1]+'&fields=name,opening_hours/weekday_text,formatted_address,formatted_phone_number,website&key=AIzaSyCzN_hQI7PADDHGD89Md1kj6DSFFORJmzY';
 						infowindow.setContent(locations[count][0] + '<br>'
 								+ locations[count][5] + '<br>' + 
 						'<input type="button" value="Get Details" id="details"/>');	
 						infowindow.open(map, marker);
-						//click button to get details	
+						//click button to get details
+						
+						
 						$("#details").click(function(){
 						    //alert("The paragraph was clicked.");
 							$.ajax({
-		        				url:	 'https://maps.googleapis.com/maps/api/place/details/json?placeid=' + locations[count][1]+'&fields=name,opening_hours/weekday_text,formatted_address,formatted_phone_number,website&key=AIzaSyCzN_hQI7PADDHGD89Md1kj6DSFFORJmzY' , 
+		        				url:	 'https://maps.googleapis.com/maps/api/place/details/json?placeid=' + locations[count][1]+'&fields=name,opening_hours/weekday_text,formatted_address,formatted_phone_number,website&key=AIzaSyB2EShyhB3vFvhOeMjexOBUgtF0-iZtvWo' , 
 		        				type: 'GET',
 		        				dataType: 'json',
 		        				contentType: 'application/json',
 		        				success: function(result) {
-		        				console.log(result);
+		        				//console.log(result);
 		        					
 		        				var webLink = result.result.website;
 		        				$("#deets-img-container").empty();
@@ -271,7 +282,6 @@ function renderMapByType() {
 		        				$("#deets-website").empty();
 		        				$("#deets-hoursOrPhone").empty();
 		        				$("#add-button").empty();
-		        				
 		        				
 		        				
 		        				
@@ -289,7 +299,11 @@ function renderMapByType() {
 		        				
 		        				$("#add-button").one('click', function(){
 		        					
-		        					
+		        					//add place id's to an array max 5 length
+			        				if(arrayOfPlaceIdForRoute.length < 5 && !arrayOfPlaceIdForRoute.includes(locations[count][1])){
+			        				arrayOfPlaceIdForRoute.push(locations[count][1]); 
+			        				//console.log(arrayOfPlaceIdForRoute);
+			        				}
 
 		        					if ( $('#location1').is(':empty')) {
 		        						$("#location1").html('<img src="img/400x200/' + locations[count][1] + 
@@ -320,6 +334,10 @@ function renderMapByType() {
 		        					
 		        				});
 		        				
+		        				
+
+		        				
+		        				
 							
 												}
 											})
@@ -329,7 +347,87 @@ function renderMapByType() {
 			}
 		}
 	}
+	
+	//function to create a route************************************************************
+	function routeMap() {
+		var center = {
+			lat : 40.442169,
+			lng : -79.994957
+		};
+		var waypoints = [];
+		var startPoint;
+		var endPoint;
+		
+		for(var i = 1; i <= arrayOfPlaceIdForRoute.length-1; i++) {
+			
+			if (i > 0 && i < arrayOfPlaceIdForRoute.length-1) {
+				
+				waypoints.push(String(arrayOfPlaceIdForRoute[i]));
+				//console.log(waypoints);
+			}
+			else {
+				endPoint = arrayOfPlaceIdForRoute[i].toString();
+					console.log(endPoint);
+					startPoint = (arrayOfPlaceIdForRoute[arrayOfPlaceIdForRoute.length-1]).toString();	
+					console.log(startPoint);
+
+			}
+			
+		}
+		
+		
+
+		var directionsService = new google.maps.DirectionsService();
+		var directionsDisplay = new google.maps.DirectionsRenderer();
+
+		var map = new google.maps.Map(document.getElementById('map'), {
+			zoom : 16,
+			mapTypeId : google.maps.MapTypeId.ROADMAP
+		});
+
+		directionsDisplay.setMap(map);
+		directionsDisplay.setPanel(document.getElementById('panel'));
+
+		var request = {
+			
+			origin : {
+			placeId : startPoint
+			},
+			
+			destination : {
+			placeId : endPoint
+			},
+			
+			waypoints : [ {
+				stopover : true,
+				location : {
+				placeId : waypoints[0]
+				}
+			}, {
+				stopover : true,
+				location : {
+				placeId : waypoints[1]
+				}
+			}, {
+				stopover : true,
+				location : {
+				placeId : waypoints[2]
+				}
+			}],
+
+			travelMode : google.maps.DirectionsTravelMode.DRIVING
+
+		};
+
+		directionsService.route(request, function(response, status) {
+			if (status == google.maps.DirectionsStatus.OK) {
+				directionsDisplay.setDirections(response);
+			}
+		});
+
+	}
 </script>
+
 
 
 
@@ -341,7 +439,8 @@ function renderMapByType() {
 		</div>
 		
 		<input type="button" value="Show" id="submit" onclick="renderMapByType();"> <input type="button" 
-			value="Show All" id="submit" onclick="initMap();">		
+			value="Show All" id="submit" onclick="initMap();">
+			<input type="button" value="route" id="submit" onclick="routeMap();">		
 	</form>
 </div>
 
