@@ -217,6 +217,14 @@ function renderMapByType() {
 							
 			infowindow.open(map, marker);
 			
+			
+			$("#deets-img-container").empty();
+			$("#deets-title").empty();
+			$("#deets-address").empty();
+			$("#deets-website").empty();
+			$("#deets-hoursOrPhone").empty();
+			$("#add-button").empty();
+			
 			//get the details when clicked
 			$("#details").one('click', function(){
 				$.ajax({
@@ -247,7 +255,7 @@ function renderMapByType() {
 	        				
 	        				
 	        				
-	        				$("#add-button").one('click', function(){
+	        				$("#add-button input").one('click', function(){
 	        					
 	        					//add place id's to an array max 5 length
 		        				if(arrayOfPlaceIdForRoute.length < 5 && !arrayOfPlaceIdForRoute.includes(locations[count][1])){
@@ -308,7 +316,7 @@ function renderMapByType() {
 			lng : -79.994957
 		};
 		var locations = [];
-		//get the data from our dp
+		//get the data from our db
 		$.ajax({
 			url : 'API/placeList',
 			type : 'GET',
@@ -372,7 +380,7 @@ function renderMapByType() {
                                             dataType: 'json',
                                             contentType: 'application/json',
                                             success: function(result) {
-                                            //console.log(result);
+                                            console.log(result);
                                                 
                                             var webLink = result.result.website;
                                             $("#deets-img-container").empty();
@@ -393,7 +401,7 @@ function renderMapByType() {
                                             
                                             
 		        				
-					        				$("#add-button").one('click', function(){
+					        				$("#add-button input").one('click', function(){
 					        					
 					        					//add place id's to an array max 5 length
 						        				if(arrayOfPlaceIdForRoute.length < 5 && !arrayOfPlaceIdForRoute.includes(locations[count][1])){
@@ -436,10 +444,10 @@ function renderMapByType() {
 											})
 					}
 					
-				})(marker, count));
-			}
-		}
-	}
+				})(marker, count)); // add event listener
+			} // for loop for markers
+		} // create marker
+	} // init map
 	
 	//function to create a route************************************************************
 	function routeMap() {
