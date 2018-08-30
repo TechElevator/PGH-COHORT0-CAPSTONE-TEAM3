@@ -388,6 +388,9 @@ input[type=button]{
 	justify-content: space-between;
 }
 
+#types_title {
+	width: 100%
+}
 .radio-button-container {
 	width: auto;
 	display: flex;

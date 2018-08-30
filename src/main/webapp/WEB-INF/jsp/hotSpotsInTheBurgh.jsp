@@ -110,6 +110,7 @@
 	
 </script>
 
+
 <script type="text/javascript">
 	//get the type marker info
 	//of the markers dont have info create function for this
@@ -296,7 +297,7 @@ function renderMapByType() {
 	}
 	
 	
-	
+	var currentDetail = null;
 		var arrayOfPlaceIdForRoute = [];
 //***********************************************************************	
 	function initMap() {
@@ -350,94 +351,91 @@ function renderMapByType() {
 						marker, count) {
 					return function() {
 
-					    $("#details").empty();
 						
-						infowindow.setContent(locations[count][0] + '<br>'
+						    infowindow.setContent(locations[count][0] + '<br>'
 								+ locations[count][5] + '<br>' + 
-						'<input type="button" value="Get Details" id="details"/>');	
-						infowindow.open(map, marker);
-						//click button to get details
+                                '<input type="button" value="Get Details" id="details"/>');	
+                                infowindow.open(map, marker);
+                                //click button to get details
 						
 						
-						$("#details").one('click', function(){
+					    	$("#details").one('click', function(){
 						    //alert("The paragraph was clicked.");
-						    
-							$.ajax({
-		        				url:	 'https://maps.googleapis.com/maps/api/place/details/json?placeid=' + locations[count][1]+'&fields=name,opening_hours/weekday_text,formatted_address,formatted_phone_number,website&key=AIzaSyB2EShyhB3vFvhOeMjexOBUgtF0-iZtvWo' , 
-		        				type: 'GET',
-		        				dataType: 'json',
-		        				contentType: 'application/json',
-		        				success: function(result) {
-		        				//console.log(result);
-		        					
-		        				var webLink = result.result.website;
-		        				$("#deets-img-container").empty();
-		        				$("#deets-title").empty();
-		        				$("#deets-address").empty();
-		        				$("#deets-website").empty();
-		        				$("#deets-hoursOrPhone").empty();
-		        				$("#add-button").empty();
+      
+                                    if (currentDetail != marker){
+                                        
+                                        currentDetail=marker;
+                                
+                                        $.ajax({
+                                            url:	 'https://maps.googleapis.com/maps/api/place/details/json?placeid=' + locations[count][1]+'&fields=name,opening_hours/weekday_text,formatted_address,formatted_phone_number,website&key=AIzaSyB2EShyhB3vFvhOeMjexOBUgtF0-iZtvWo' , 
+                                            type: 'GET',
+                                            dataType: 'json',
+                                            contentType: 'application/json',
+                                            success: function(result) {
+                                            //console.log(result);
+                                                
+                                            var webLink = result.result.website;
+                                            $("#deets-img-container").empty();
+                                            $("#deets-title").empty();
+                                            $("#deets-address").empty();
+                                            $("#deets-website").empty();
+                                            $("#deets-hoursOrPhone").empty();
+                                            $("#add-button").empty();		        				
+                                            
+                                            $("#deets-img-container").html('<img src="img/400x200/' + locations[count][1] + '.jpg"' + ' alt="no alt for img">');
+                                            $("#deets-title").html(result.result.name);
+                                            $("#deets-address").html(result.result.formatted_address);
+                                            $("#deets-website").html('<a href="' + result.result.website +'">Check out their site to learn more</a>');
+                                            
+                                            $("#deets-hoursOrPhone").html(result.result.hasOwnProperty("opening_hours") ? result.result.opening_hours.weekday_text : result.result.formatted_phone_number  +"<br>"+' hours not available');
+                                            
+                                            $("#add-button").html('<input type="image" src="img/add-button.png" name="add-button">');
+                                            
+                                            
 		        				
-		        				
-		        				
-		        				
-		        				$("#deets-img-container").html('<img src="img/400x200/' + locations[count][1] + '.jpg"' + ' alt="no alt for img">');
-		        				$("#deets-title").html(result.result.name);
-		        				$("#deets-address").html(result.result.formatted_address);
-		        				$("#deets-website").html('<a href="' + result.result.website +'">Check out their site to learn more</a>');
-		        				
-		        				$("#deets-hoursOrPhone").html(result.result.hasOwnProperty("opening_hours") ? result.result.opening_hours.weekday_text : result.result.formatted_phone_number  +"<br>"+' hours not available');
-		        				
-		        				$("#add-button").html('<input type="image" src="img/add-button.png" name="add-button">');
-		        				
-		        				
-		        				
-		        				$("#add-button").one('click', function(){
-		        					
-		        					//add place id's to an array max 5 length
-			        				if(arrayOfPlaceIdForRoute.length < 5 && !arrayOfPlaceIdForRoute.includes(locations[count][1])){
-			        				arrayOfPlaceIdForRoute.push(locations[count][1]); 
-			        				//console.log(arrayOfPlaceIdForRoute);
-			        				}
-
-		        					if ( $('#location1').is(':empty')) {
-		        						$("#location1").html('<img src="img/400x200/' + locations[count][1] + 
-		        								'.jpg"' + 'alt="no alt for img" height="100px" width="200px">');
-		        					}
-		        
-		        					else if ( $('#location2').is(':empty')) {
-		        						$('#location2').html('<img src="img/400x200/' + locations[count][1] + 
-		        								'.jpg"' + ' alt="no alt for img" height="100px" width="200px">');
-		        					}
-		        					
-		        					else if ( $('#location3').is(':empty')) {
-		        						$('#location3').html('<img src="img/400x200/' + locations[count][1] + 
-		        								'.jpg"' + ' alt="no alt for img" height="100px" width="200px">');
-		        					}
-		        					
-		        					else if ( $('#location4').is(':empty')) {
-		        						$('#location4').html('<img src="img/400x200/' + locations[count][1] + 
-		        								'.jpg"' + ' alt="no alt for img" height="100px" width="200px">');
-		        					}
-		        					
-		        					else if ( $('#location5').is(':empty')) {
-		        						$('#location5').html('<img src="img/400x200/' + locations[count][1] + 
-		        								'.jpg"' + ' alt="no alt for img" height="100px" width="200px">');
-		        					}
-		        					
-		        			
-		        					
-		        				});
-		        				
-		        				
-
-		        				
-		        				
-							
-												}
+					        				$("#add-button").one('click', function(){
+					        					
+					        					//add place id's to an array max 5 length
+						        				if(arrayOfPlaceIdForRoute.length < 5 && !arrayOfPlaceIdForRoute.includes(locations[count][1])){
+						        				arrayOfPlaceIdForRoute.push(locations[count][1]); 
+						        				//console.log(arrayOfPlaceIdForRoute);
+						        				}
+			
+					        					if ( $('#location1').is(':empty')) {
+					        						$("#location1").html('<img src="img/400x200/' + locations[count][1] + 
+					        								'.jpg"' + 'alt="no alt for img" height="100px" width="200px">');
+					        					}
+					        
+					        					else if ( $('#location2').is(':empty')) {
+					        						$('#location2').html('<img src="img/400x200/' + locations[count][1] + 
+					        								'.jpg"' + ' alt="no alt for img" height="100px" width="200px">');
+					        					}
+					        					
+					        					else if ( $('#location3').is(':empty')) {
+					        						$('#location3').html('<img src="img/400x200/' + locations[count][1] + 
+					        								'.jpg"' + ' alt="no alt for img" height="100px" width="200px">');
+					        					}
+					        					
+					        					else if ( $('#location4').is(':empty')) {
+					        						$('#location4').html('<img src="img/400x200/' + locations[count][1] + 
+					        								'.jpg"' + ' alt="no alt for img" height="100px" width="200px">');
+					        					}
+					        					
+					        					else if ( $('#location5').is(':empty')) {
+					        						$('#location5').html('<img src="img/400x200/' + locations[count][1] + 
+					        								'.jpg"' + ' alt="no alt for img" height="100px" width="200px">');
+					        					}
+					        					
+                                            });
+                                         currentDetail=null;
+                                    }
+					        			
+					        					
+					        				});
+		        				}
 											})
-										});
 					}
+					
 				})(marker, count));
 			}
 		}
@@ -522,7 +520,6 @@ function renderMapByType() {
 
 	}
 </script>
-
 
 
 
