@@ -54,6 +54,49 @@
 
 </div>
 
+
+
+
+
+<div id="types-filter-container">
+	<form name="frm_map" id="frm_map">
+		
+		<div id="type_holder" >
+			<p>Types</p>
+		</div>
+		
+		<div id="submit-buttons-container">
+		<div class="submit-button">
+		<input type="button" value="Search All Spots" id="submit" onclick="initMap();">
+		</div>
+		<div class="submit-button">
+		<input type="button" value="Get Route" id="submit" onclick="routeMap();">
+		</div>		
+		</div>
+		
+		
+	</form>
+</div>
+
+<br>
+<div id="location-deets-container">
+
+	<div id="deets-img-container"></div>
+	<div id="deets-info-container">
+
+		<div id="deets-title"></div>
+		<div id="deets-address"></div>
+		<div id="deets-website"></div>
+		<div id="deets-hoursOrPhone"></div>
+
+		<div id="add-button"></div>
+		<div id="delete-button"></div>
+
+
+	</div>
+
+</div>
+
 <div id="panel-container">
 
 	<div id="panel"></div>
@@ -480,47 +523,6 @@ function renderMapByType() {
 	}
 </script>
 
-
-
-
-<div id="types-filter-container">
-	<form name="frm_map" id="frm_map">
-		
-		<div id="type_holder" >
-			<p>Types</p>
-		</div>
-		
-		<div id="submit-buttons-container">
-		<div class="submit-button">
-		<input type="button" value="Search All Spots" id="submit" onclick="initMap();">
-		</div>
-		<div class="submit-button">
-		<input type="button" value="Get Route" id="submit" onclick="routeMap();">
-		</div>		
-		</div>
-		
-		
-	</form>
-</div>
-
-
-<div id="location-deets-container">
-
-	<div id="deets-img-container"></div>
-	<div id="deets-info-container">
-
-		<div id="deets-title"></div>
-		<div id="deets-address"></div>
-		<div id="deets-website"></div>
-		<div id="deets-hoursOrPhone"></div>
-
-		<div id="add-button"></div>
-		<div id="delete-button"></div>
-
-
-	</div>
-
-</div>
 
 
 
