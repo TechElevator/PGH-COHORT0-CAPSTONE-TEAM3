@@ -448,7 +448,7 @@ function renderMapByType() {
 					        								'.jpg"' + ' alt="no alt for img" height="100px" width="200px">');
 					        						
 					        						$("#getRoute").html('<input type="button" value="Get Route" id="submit" onclick="routeMap();">');
-					        						$("#saveRoute").html('<input type="button" value="Save Route" id="submit" onclick="routeMap();">');
+					        						$("#saveRoute").html('<form action="hotspotsBurgh" method ="POST">' + '<input type="button" name="result" value="Save Route" id="submit" onclick="routeMap();">');
 					        					}
 						        				}
                                             });

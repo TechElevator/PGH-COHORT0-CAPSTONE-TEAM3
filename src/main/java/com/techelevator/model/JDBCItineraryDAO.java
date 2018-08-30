@@ -39,7 +39,7 @@ public class JDBCItineraryDAO implements ItineraryDAO {
 					NewItinerary.getGoogle_id_one(), NewItinerary.getGoogle_id_two(), NewItinerary.getGoogle_id_three(), NewItinerary.getGoogle_id_four(),
 					NewItinerary.getGoogle_id_five(), NewItinerary.isVisible(), NewItinerary.getName_one(),
 					NewItinerary.getName_two(), NewItinerary.getName_three(), NewItinerary.getName_four() ,NewItinerary.getName_five());
-			NewItinerary.setItinerary_id(id);	
+				
 	}
 	
 	private int getNextItineraryId() {

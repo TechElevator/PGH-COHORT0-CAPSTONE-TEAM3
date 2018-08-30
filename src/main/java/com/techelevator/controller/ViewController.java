@@ -3,6 +3,7 @@ package com.techelevator.controller;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -41,7 +42,27 @@ public class ViewController {
 	
 	
 	@RequestMapping (path="/hotspotsBurgh", method=RequestMethod.GET)
-	public String displayHotspotsBurghPage() {
+	public String displayHotspotsBurghPage(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		int id = (int) session.getAttribute("id");
+		
+		
+		return "hotSpotsInTheBurgh";
+	}
+	
+	@RequestMapping (path="/hotspotsBurgh", method=RequestMethod.POST)
+	public String SaveAnIntinerary(@RequestParam String[] UsersItinerary) {
+
+		
+		Itinerary UserNewItinerary = new Itinerary();
+		//		HttpSession session = request.getSession();
+		for(String POI : UsersItinerary) {
+			
+			System.out.println(POI);
+		}
+//		int id = (int) session.getAttribute("id");
+		
+		
 		return "hotSpotsInTheBurgh";
 	}
 	
@@ -55,9 +76,7 @@ public class ViewController {
 		
 		int id = (int) session.getAttribute("id");
 		session.getAttribute("currentUser");
-		session.getServletContext();
-		session.toString();
-		session.getAttributeNames();
+		
 		
 		
 		List<Itinerary> Itineraries = ItinDAO.getItinerarysByUser(id);
