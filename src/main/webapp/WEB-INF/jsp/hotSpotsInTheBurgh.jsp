@@ -197,7 +197,7 @@ function renderMapByType() {
 	        				$("#deets-website").append('<a href="' + result.result.website +'">Check out their site to learn more</a>');
 	        				$("#deets-hoursOrPhone").append(result.result.hasOwnProperty("opening_hours") ? result.result.opening_hours.weekday_text : result.result.formatted_phone_number  +"<br>"+' hours not available');
 	        				
-	        				$("#deets-hoursOrPhone").append(result.result.hasOwnProperty("opening_hours") ? result.result.opening_hours.weekday_text : result.result.formatted_phone_number  +"<br>"+' hours not available');
+	        				
 	        				
 	        				$("#add-button").append('<input type="image" src="img/add-button.png" name="add-button">');
 	        				
