@@ -260,8 +260,8 @@ function renderMapByType() {
 	        					//add place id's to an array max 5 length
 		        				if(arrayOfPlaceIdForRoute.length < 5 && !arrayOfPlaceIdForRoute.includes(locations[count][1])){
 		        				arrayOfPlaceIdForRoute.push(locations[count][1]); 
-		        				//console.log(arrayOfPlaceIdForRoute);
-		        				}
+		        				console.log(arrayOfPlaceIdForRoute);
+		        				
 
 	        					if ( $('#location1').is(':empty')) {
 	        						$("#location1").html('<img src="img/400x200/' + locations[count][1] + 
@@ -288,7 +288,7 @@ function renderMapByType() {
 	        								'.jpg"' + ' alt="no alt for img" height="100px" width="200px">');
 	        					}
 	        					
-	        			
+		        				}
 	        					
 	        				});
 	        				
@@ -407,7 +407,7 @@ function renderMapByType() {
 						        				if(arrayOfPlaceIdForRoute.length < 5 && !arrayOfPlaceIdForRoute.includes(locations[count][1])){
 						        				arrayOfPlaceIdForRoute.push(locations[count][1]); 
 						        				//console.log(arrayOfPlaceIdForRoute);
-						        				}
+						        				
 			
 					        					if ( $('#location1').is(':empty')) {
 					        						$("#location1").html('<img src="img/400x200/' + locations[count][1] + 
@@ -433,7 +433,7 @@ function renderMapByType() {
 					        						$('#location5').html('<img src="img/400x200/' + locations[count][1] + 
 					        								'.jpg"' + ' alt="no alt for img" height="100px" width="200px">');
 					        					}
-					        					
+						        				}
                                             });
                                          currentDetail=null;
                                     }
