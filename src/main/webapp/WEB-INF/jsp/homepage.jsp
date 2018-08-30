@@ -8,11 +8,6 @@
 
 
 
-<script>
-$('.carousel').carousel({
-	interval: 5000 //changes the speed
-	})
-</script>
 
 <header id="myCarousel" class="carousel slide">
 
@@ -133,5 +128,10 @@ $('.carousel').carousel({
 </form>
 </div>
 
+<script>
+$('.carousel').carousel({
+	interval: 4000 //changes the speed
+	})
+</script>
 
 <c:import url="/WEB-INF/jsp/footer.jsp" />

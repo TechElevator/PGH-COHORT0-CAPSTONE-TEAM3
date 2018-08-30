@@ -54,7 +54,11 @@
 
 </div>
 
+<div id="panel-container">
 
+	<div id="panel"></div>
+
+</div>
 
 
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
@@ -179,20 +183,58 @@ function renderMapByType() {
 	        				$("#deets-website").empty();
 	        				$("#deets-hoursOrPhone").empty();
 	        				
-	        				
-	        				//origin watpoint destination
-	        				
-	        				
-	        				
-	        				
-	        				
-	        				
+	        			
 	        				
 	        				$("#deets-img-container").append('<img src="img/400x200/' + locations[count][1] + '.jpg"' + ' alt="no alt for img">');
 	        				$("#deets-title").append(result.result.name);
 	        				$("#deets-address").append(result.result.formatted_address);
 	        				$("#deets-website").append('<a href="' + result.result.website +'">Check out their site to learn more</a>');
 	        				$("#deets-hoursOrPhone").append(result.result.hasOwnProperty("opening_hours") ? result.result.opening_hours.weekday_text : result.result.formatted_phone_number  +"<br>"+' hours not available');
+	        				
+	        				$("#deets-hoursOrPhone").append(result.result.hasOwnProperty("opening_hours") ? result.result.opening_hours.weekday_text : result.result.formatted_phone_number  +"<br>"+' hours not available');
+	        				
+	        				$("#add-button").append('<input type="image" src="img/add-button.png" name="add-button">');
+	        				
+	        				
+	        				
+	        				$("#add-button").one('click', function(){
+	        					
+	        					//add place id's to an array max 5 length
+		        				if(arrayOfPlaceIdForRoute.length < 5 && !arrayOfPlaceIdForRoute.includes(locations[count][1])){
+		        				arrayOfPlaceIdForRoute.push(locations[count][1]); 
+		        				//console.log(arrayOfPlaceIdForRoute);
+		        				}
+
+	        					if ( $('#location1').is(':empty')) {
+	        						$("#location1").html('<img src="img/400x200/' + locations[count][1] + 
+	        								'.jpg"' + 'alt="no alt for img" height="100px" width="200px">');
+	        					}
+	        
+	        					else if ( $('#location2').is(':empty')) {
+	        						$('#location2').html('<img src="img/400x200/' + locations[count][1] + 
+	        								'.jpg"' + ' alt="no alt for img" height="100px" width="200px">');
+	        					}
+	        					
+	        					else if ( $('#location3').is(':empty')) {
+	        						$('#location3').html('<img src="img/400x200/' + locations[count][1] + 
+	        								'.jpg"' + ' alt="no alt for img" height="100px" width="200px">');
+	        					}
+	        					
+	        					else if ( $('#location4').is(':empty')) {
+	        						$('#location4').html('<img src="img/400x200/' + locations[count][1] + 
+	        								'.jpg"' + ' alt="no alt for img" height="100px" width="200px">');
+	        					}
+	        					
+	        					else if ( $('#location5').is(':empty')) {
+	        						$('#location5').html('<img src="img/400x200/' + locations[count][1] + 
+	        								'.jpg"' + ' alt="no alt for img" height="100px" width="200px">');
+	        					}
+	        					
+	        			
+	        					
+	        				});
+	        				
+	        				
 	        				
 									}          			
 							})
@@ -251,7 +293,7 @@ function renderMapByType() {
 							locations[count][4]),
 					map : map,
 					title : locations[count][0],
-					animation : google.maps.Animation.BOUNCE
+					animation : google.maps.Animation.DROP
 				});
 				
 				
