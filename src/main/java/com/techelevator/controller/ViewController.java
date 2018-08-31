@@ -1,5 +1,6 @@
 package com.techelevator.controller;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -44,24 +45,43 @@ public class ViewController {
 	@RequestMapping (path="/hotspotsBurgh", method=RequestMethod.GET)
 	public String displayHotspotsBurghPage(HttpServletRequest request) {
 		HttpSession session = request.getSession();
-		int id = (int) session.getAttribute("id");
+		
 		
 		
 		return "hotSpotsInTheBurgh";
 	}
 	
 	@RequestMapping (path="/hotspotsBurgh", method=RequestMethod.POST)
-	public String SaveAnIntinerary(@RequestParam String[] UsersItinerary) {
-
+	public String SaveAnIntinerary(@RequestParam ("result[]") List<String>UsersItinerary, HttpServletRequest request) {
 		
+		//HttpSession session = request.getSession();
+		
+		List <String> fromJSP = new ArrayList<>();
 		Itinerary UserNewItinerary = new Itinerary();
 		//		HttpSession session = request.getSession();
 		for(String POI : UsersItinerary) {
-			
+			fromJSP.add(POI);
+			System.out.println(POI);
+			System.out.println(POI);
+			System.out.println(POI);
+			System.out.println(POI);
+			System.out.println(POI);
+			System.out.println(POI);
 			System.out.println(POI);
 		}
-//		int id = (int) session.getAttribute("id");
 		
+		UserNewItinerary.setName_one(fromJSP.get(0));
+		UserNewItinerary.setGoogle_id_one(fromJSP.get(1));
+		UserNewItinerary.setName_two(fromJSP.get(2));
+		UserNewItinerary.setGoogle_id_two(fromJSP.get(3));
+		UserNewItinerary.setName_three(fromJSP.get(4));
+		UserNewItinerary.setGoogle_id_three(fromJSP.get(5));
+		UserNewItinerary.setName_four(fromJSP.get(6));
+		UserNewItinerary.setGoogle_id_four(fromJSP.get(7));
+		UserNewItinerary.setName_five(fromJSP.get(8));
+		UserNewItinerary.setGoogle_id_five(fromJSP.get(9));
+		
+		itineraryDao.addItinerary(UserNewItinerary);
 		
 		return "hotSpotsInTheBurgh";
 	}

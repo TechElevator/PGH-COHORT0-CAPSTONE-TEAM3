@@ -29,15 +29,15 @@ public class JDBCItineraryDAO implements ItineraryDAO {
 	
 	
 	@Override
-	public void addItinerary(int id) {
+	public void addItinerary(Itinerary userItinerary) {
 			String sqlInsertNewItinerary = "INSERT INTO itineraries(itinerary_id,user_id,google_id_one,name_one,google_id_two,name_two,google_id_three,name_three,google_id_four,name_four,google_id_five,name_five,visible) "
 					+ "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,true) RETURNING itinerary_id;";
 		
-			Itinerary NewItinerary = new Itinerary();
+			Itinerary NewItinerary = userItinerary;
 			NewItinerary.setItinerary_id(getNextItineraryId());
 			jdbcTemplate.update(sqlInsertNewItinerary, NewItinerary.getUser_id(),
 					NewItinerary.getGoogle_id_one(), NewItinerary.getGoogle_id_two(), NewItinerary.getGoogle_id_three(), NewItinerary.getGoogle_id_four(),
-					NewItinerary.getGoogle_id_five(), NewItinerary.isVisible(), NewItinerary.getName_one(),
+					NewItinerary.getGoogle_id_five(),  NewItinerary.getName_one(),
 					NewItinerary.getName_two(), NewItinerary.getName_three(), NewItinerary.getName_four() ,NewItinerary.getName_five());
 				
 	}

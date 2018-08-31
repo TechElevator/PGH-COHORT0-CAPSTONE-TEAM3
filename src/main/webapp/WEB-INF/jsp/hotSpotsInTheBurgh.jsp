@@ -265,7 +265,7 @@ function renderMapByType() {
 	        				$("#add-button input").one('click', function(){
 	        					
 	        					//add place id's to an array max 5 length
-		        				if(arrayOfPlaceIdForRoute.length < 5 && !arrayOfPlaceIdForRoute.includes(locations[count][1])){
+		        				if(arrayOfPlaceIdForRoute.length < 10 && !arrayOfPlaceIdForRoute.includes(locations[count][1])){
 		        					arrayOfPlaceIdForRoute.push(locations[count][1]);
 		        					arrayOfPlaceIdForRoute.push(locations[count][0]); 
 		        				console.log(arrayOfPlaceIdForRoute);
@@ -417,7 +417,7 @@ function renderMapByType() {
 					        				$("#add-button input").one('click', function(){
 					        					
 					        					//add place id's to an array max 5 length
-						        				if(arrayOfPlaceIdForRoute.length < 5 && !arrayOfPlaceIdForRoute.includes(locations[count][1])){
+						        				if(arrayOfPlaceIdForRoute.length < 10 && !arrayOfPlaceIdForRoute.includes(locations[count][1])){
 						        				arrayOfPlaceIdForRoute.push(locations[count][0]); 
 						        				arrayOfPlaceIdForRoute.push(locations[count][1]); 
 						        				console.log(arrayOfPlaceIdForRoute);
@@ -448,7 +448,19 @@ function renderMapByType() {
 					        								'.jpg"' + ' alt="no alt for img" height="100px" width="200px">');
 					        						
 					        						$("#getRoute").html('<input type="button" value="Get Route" id="submit" onclick="routeMap();">');
-					        						$("#saveRoute").html('<form action="hotspotsBurgh" method ="POST">' + '<input type="button" name="result" value="Save Route" id="submit" onclick="routeMap();">');
+					        						$("#saveRoute").html('<form action="hotspotsBurgh" method ="POST">' + 		
+					        						'<input type="hidden" name="result" value="results[0]">' +
+					        						'<input type="hidden" name="result" value="results[1]">'+
+					        						'<input type="hidden" name="result" value="results[2]">'+
+					        						'<input type="hidden" name="result" value="results[3]">'+
+					        						'<input type="hidden" name="result" value="results[4]">'+
+					        						'<input type="hidden" name="result" value="results[5]">'+
+					        						'<input type="hidden" name="result" value="results[6]">'+
+					        						'<input type="hidden" name="result" value="results[7]">'+
+					        						'<input type="hidden" name="result" value="results[8]">'+
+					        						'<input type="hidden" name="result" value="results[9]">'+		
+					        						'<input type="submit" name="result" value="Save Route" id="submit">'+
+					        						'</form');
 					        					}
 						        				}
                                             });
